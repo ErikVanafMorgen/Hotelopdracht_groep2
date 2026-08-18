@@ -1,25 +1,5 @@
 <?php
-
-include 'includes/connectie.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $gebruikersnaam = $_POST['Gebruikersnaam'];
-    $email = $_POST['email'];
-    $wachtwoord = $_POST['wachtwoord'];
-
-    // Haalt de gebruiker op uit de database.
-    $stmt = $pdo->prepare("SELECT * FROM gebruikers WHERE gebruikersnaam = :gebruikersnaam OR email = :email");
-    $stmt->execute(['gebruikersnaam' => $gebruikersnaam, 'email' => $email]);
-    $Gebruiker = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // Checkt op of de gebruikersnaam en of het wachtwoord correct is.
-    if ($Gebruiker && password_verify($wachtwoord, $Gebruiker['wachtwoord'])) {
-        echo "Inloggen succesvol!";
-    } else {
-        echo "Ongeldige gebruikersnaam/email of wachtwoord.";
-    }
-}
-
+    include 'includes/connectie.php';
 ?>
 
 <html lang="en">
@@ -44,3 +24,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 </body>
 </html>
+
+<?php
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $gebruikersnaam = $_POST['Gebruikersnaam'];
+    $email = $_POST['email'];
+    $wachtwoord = $_POST['wachtwoord'];
+
+    // Haalt de gebruiker op uit de database.
+    $stmt = $pdo->prepare("SELECT * FROM gebruikers WHERE gebruikersnaam = :gebruikersnaam OR email = :email");
+    $stmt->execute(['gebruikersnaam' => $gebruikersnaam, 'email' => $email]);
+    $Gebruiker = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Checkt op of de gebruikersnaam en of het wachtwoord correct is.
+    if ($Gebruiker && password_verify($wachtwoord, $Gebruiker['wachtwoord'])) {
+        echo "Inloggen succesvol!";
+    } else {
+        echo "Ongeldige gebruikersnaam/email of wachtwoord.";
+    }
+}
+
+?>
