@@ -1,49 +1,70 @@
 <?php
+$pagina_titel = 'Registratie';
 
-include 'includes/connectie.php';
+$bericht = null;
+$bericht_type = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $gebruikersnaam = $_POST['Gebruikersnaam'];
-    $email = $_POST['email'];
-    $wachtwoord = password_hash($_POST['wachtwoord'], PASSWORD_DEFAULT);
+    $gebruikersnaam = trim($_POST['gebruikersnaam'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $wachtwoord = $_POST['wachtwoord'] ?? '';
 
-    // Checkt of gebruikersnaam al bestaat in de database.
-    $stmt = $pdo->prepare("SELECT * FROM gebruikers WHERE gebruikersnaam = :gebruikersnaam OR email = :email");
-    $stmt->execute(['gebruikersnaam' => $gebruikersnaam, 'email' => $email]);
-    $BestaandeGebruiker = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($BestaandeGebruiker) {
-        echo "Gebruikersnaam of email bestaat al.";
+    if ($gebruikersnaam && $email && $wachtwoord) {
+        try {
+            include 'includes/connectie.php';
+            $check = $pdo->prepare("SELECT id FROM gebruikers WHERE gebruikersnaam = :gnaam OR email = :email LIMIT 1");
+            $check->execute([':gnaam' => $gebruikersnaam, ':email' => $email]);
+            if ($check->fetch()) {
+                $bericht = "Gebruikersnaam of email bestaat al.";
+                $bericht_type = 'fout';
+            } else {
+                $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
+                $stmt = $pdo->prepare("INSERT INTO gebruikers (gebruikersnaam, email, wachtwoord) VALUES (:gnaam, :email, :ww)");
+                $stmt->execute([':gnaam' => $gebruikersnaam, ':email' => $email, ':ww' => $hash]);
+                $bericht = "Registratie succesvol! U kunt nu inloggen.";
+                $bericht_type = 'succes';
+            }
+        } catch (PDOException $e) {
+            $bericht = "Er is een fout opgetreden. Probeer het opnieuw.";
+            $bericht_type = 'fout';
+        }
     } else {
-        // Voegt nieuwe gebruiker in database toe.
-        $stmt = $pdo->prepare("INSERT INTO gebruikers (gebruikersnaam, email, wachtwoord) VALUES (:gebruikersnaam, :email, :wachtwoord)");
-        $stmt->execute(['gebruikersnaam' => $gebruikersnaam, 'email' => $email, 'wachtwoord' => $wachtwoord]);
-
-        echo "Registratie succesvol!";
+        $bericht = "Vul alle velden in.";
+        $bericht_type = 'fout';
     }
 }
-
 ?>
+<?php include 'includes/header.php'; ?>
+<?php include 'includes/navbar.php'; ?>
 
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registratie</title>
-</head>
-<body>
-    <h1>Registratie</h1>
-    <form method="POST" action="">
-        <label for="Gebruikersnaam">Gebruikersnaam:</label>
-        <input type="text" id="Gebruikersnaam" name="Gebruikersnaam" required><br>
+<section class="auth-sectie">
+    <div class="auth-kaart">
+        <h2>Account Aanmaken</h2>
+        <p class="auth-sub">Registreer uzelff voor toegang tot exclusieve voordelen</p>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br>
+        <?php if ($bericht): ?>
+            <div class="bericht <?php echo $bericht_type === 'succes' ? 'bericht-succes' : 'bericht-fout'; ?>">
+                <?php echo $bericht; ?>
+            </div>
+        <?php endif; ?>
 
-        <label for="wachtwoord">Wachtwoord:</label>
-        <input type="password" id="wachtwoord" name="wachtwoord" required><br>
+        <form method="POST" action="registratie.php">
+            <div class="formulier-veld">
+                <label for="gebruikersnaam">Gebruikersnaam</label>
+                <input type="text" id="gebruikersnaam" name="gebruikersnaam" placeholder="Kies een gebruikersnaam" required>
+            </div>
+            <div class="formulier-veld">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="uw@email.nl" required>
+            </div>
+            <div class="formulier-veld">
+                <label for="wachtwoord">Wachtwoord</label>
+                <input type="password" id="wachtwoord" name="wachtwoord" placeholder="Kies een sterk wachtwoord" required>
+            </div>
+            <button type="submit" class="btn-verstuur">Registreer</button>
+        </form>
+        <p class="auth-link">Heeft u al een account? <a href="login.php">Log hier in</a></p>
+    </div>
+</section>
 
-        <input type="submit" value="Registreer">
-    </form>
-</body>
-</html>
+<?php include 'includes/footer.php'; ?>
