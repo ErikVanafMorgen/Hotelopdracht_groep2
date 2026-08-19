@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($gebruikersnaam && $email && $wachtwoord) {
         try {
             include 'includes/connectie.php';
-            $stmt = $pdo->prepare("SELECT * FROM Gebruikers WHERE gebruikersnaam = :gnaam OR email = :email LIMIT 1");
+            $stmt = $pdo->prepare("SELECT * FROM gebruikers WHERE gebruikersnaam = :gnaam OR email = :email LIMIT 1");
             $stmt->execute([':gnaam' => $gebruikersnaam, ':email' => $email]);
             $gebruiker = $stmt->fetch(PDO::FETCH_ASSOC);
 

@@ -12,14 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($gebruikersnaam && $email && $wachtwoord) {
         try {
             include 'includes/connectie.php';
-            $check = $pdo->prepare("SELECT id FROM Gebruikers WHERE gebruikersnaam = :gnaam OR email = :email LIMIT 1");
+            $check = $pdo->prepare("SELECT id FROM gebruikers WHERE gebruikersnaam = :gnaam OR email = :email LIMIT 1");
             $check->execute([':gnaam' => $gebruikersnaam, ':email' => $email]);
             if ($check->fetch()) {
                 $bericht = "Gebruikersnaam of email bestaat al.";
                 $bericht_type = 'fout';
             } else {
                 $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
-                $stmt = $pdo->prepare("INSERT INTO Gebruikers (gebruikersnaam, email, wachtwoord) VALUES (:gnaam, :email, :ww)");
+                $stmt = $pdo->prepare("INSERT INTO gebruikers (gebruikersnaam, email, wachtwoord) VALUES (:gnaam, :email, :ww)");
                 $stmt->execute([':gnaam' => $gebruikersnaam, ':email' => $email, ':ww' => $hash]);
                 $bericht = "Registratie succesvol! U kunt nu inloggen.";
                 $bericht_type = 'succes';
