@@ -121,7 +121,7 @@ if (isset($_POST['verstuur'])) {
                 </div>
                 <div class="formulier-rij">
                     <div class="formulier-veld full">
-                        <label for="bericht">Bericht</label>
+                        <label for="bericht">Berichten</label>
                         <textarea id="bericht" name="bericht" placeholder="Typ hier uw bericht..." required></textarea>
                     </div>
                 </div>
