@@ -1,5 +1,12 @@
 <?php
 
+session_start();
+
+if (!isset($_SESSION['gebruiker_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
 include 'includes/connectie.php';
 
 ?>
