@@ -5,7 +5,7 @@
 <section class="ons-hero">
     <div>
         <h1>Over Ons</h1>
-        <p>Leer het verhaal achter Hotel Zonne Valei en ontmoet het team dat uw verblijf bijzonder maakt</p>
+        <p>Leer het verhaal achter Hotel Zonne Vallei en ontmoet het team dat uw verblijf bijzonder maakt</p>
         <div class="breadcrumb"><a href="index.php">Home</a> / Over Ons</div>
     </div>
 </section>
@@ -16,7 +16,7 @@
         <div class="verhaal-tekst">
             <span class="ondertitel" style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 4px; color: var(--goud); display: block; margin-bottom: 10px;">Ons Verhaal</span>
             <h3>Een Familiebedrijf Met Passie</h3>
-            <p>Hotel Zonne Valei werd opgericht in 2005 door de familie Van der Berg. Wat begon als een klein familiebedrijf is uitgegroeid tot een van de meest geliefde hotels in de regio.</p>
+            <p>Hotel Zonne Vallei werd opgericht in 2005 door de familie Van der Berg. Wat begon als een klein familiebedrijf is uitgegroeid tot een van de meest geliefde hotels in de regio.</p>
             <p>Al meer dan 20 jaar verwelkomen wij gasten van over de hele wereld. Onze passie voor gastvrijheid zit in alles wat wij doen, van de zorgvuldig ingerichte kamers tot de persoonlijke aandacht voor elke gast.</p>
             <p>Wij geloven dat een verblijf bij ons meer is dan alleen een nacht weg - het is een ervaring die u bijblijft.</p>
         </div>
