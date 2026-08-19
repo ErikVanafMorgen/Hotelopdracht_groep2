@@ -1,7 +1,7 @@
 <?php
 
 $host = 'localhost';
-$dbname = 'Zonne_valei';
+$dbname = 'Zonne_vallei';
 $username = 'root';
 $password = '';
 

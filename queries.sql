@@ -1,6 +1,6 @@
-CREATE DATABASE IF NOT EXISTS Zonne_valei;
+CREATE DATABASE IF NOT EXISTS Zonne_vallei;
 
-USE Zonne_valei;
+USE Zonne_vallei;
 
 CREATE TABLE IF NOT EXISTS gebruikers (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS Restaurant (
 
 CREATE TABLE IF NOT EXISTS Contact (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    Gebruikers_id INT NOT NULL,
+    Gebruikers_id INT,
     onderwerp VARCHAR(100) NOT NULL,
     bericht TEXT NOT NULL,
     aangemaakt_op TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
