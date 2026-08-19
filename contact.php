@@ -13,7 +13,7 @@ if (isset($_POST['verstuur'])) {
     if ($naam && $email && $onderwerp && $bericht_tekst) {
         try {
             include 'includes/connectie.php';
-            $stmt = $pdo->prepare("INSERT INTO Contact (Gebruikers_id, onderwerp, bericht) VALUES (NULL, :onderwerp, :bericht)");
+            $stmt = $pdo->prepare("INSERT INTO Contact (gebruikers_id, onderwerp, bericht) VALUES (NULL, :onderwerp, :bericht)");
             $stmt->execute([':onderwerp' => $onderwerp, ':bericht' => "Van: $naam ($email, $telefoon)\n\n$bericht_tekst"]);
             $bericht = "Bedankt voor uw bericht! Wij nemen zo snel mogelijk contact met u op.";
             $bericht_type = 'succes';
