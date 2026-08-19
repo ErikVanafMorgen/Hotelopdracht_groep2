@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $bericht_type = 'succes';
             }
         } catch (PDOException $e) {
-            $bericht = "Er is een fout opgetreden. Probeer het opnieuw.";
+            $bericht = "Er is een fout opgetreden. Probeer het later opnieuw.";
             $bericht_type = 'fout';
         }
     } else {
