@@ -9,7 +9,7 @@ $ingelogd = isset($_SESSION['gebruiker_id']);
 <nav class="navbar" id="navbar">
     <div class="nav-container">
         <a href="index.php" class="nav-logo">
-            <span class="logo-naam">Zonne Valei</span>
+            <span class="logo-naam">Zonne Vallei</span>
             <span class="logo-sub">Hotel & Restaurant</span>
         </a>
         <ul class="nav-links" id="navLinks">

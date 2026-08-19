@@ -5,7 +5,7 @@
 <section class="hero">
     <div class="hero-content">
         <p class="hero-subtitle">Welkom bij</p>
-        <h1>Hotel Zonne Valei</h1>
+        <h1>Hotel Zonne Vallei</h1>
         <p>Ontspan en geniet van luxe accommodatie, culinaire verwennerij en ongeëvenaarde gastvrijheid in het hart van de natuur.</p>
         <div class="hero-buttons">
             <a href="kamers.php" class="btn-primary">Bekijk Kamers</a>
@@ -16,7 +16,7 @@
 
 <section class="sectie">
     <div class="sectie-kop">
-        <span class="ondertitel">Waarom Zonne Valei</span>
+        <span class="ondertitel">Waarom Zonne Vallei</span>
         <h2> Een Unieke Ervaring</h2>
         <div class="lijn"></div>
         <p>Wij bieden u alles wat u nodig heeft voor een perfect verblijf, van comfortabele kamers tot uitstekende service.</p>

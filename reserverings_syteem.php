@@ -31,9 +31,9 @@ include 'includes/connectie.php';
         <label for="kamer_type">Kamer Type:</label>
         <select id="kamer_type" name="kamer_type" required>
             <option value="">Selecteer een kamer type</option>
-            <option value="Standaard Kamer">Comfort Kamer</option>
-            <option value="Luxe Kamer">Deluxe Kamer</option>
-            <option value="Suite">Junior Suite</option>
+            <option value="C Kamer">Comfort Kamer</option>
+            <option value="D Kamer">Deluxe Kamer</option>
+            <option value="J Suite">Junior Suite</option>
             <option value="F Suite">Familie Suite</option>
             <option value="B Suite">Bruidssuite</option>
         </select>
