@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <section class="auth-sectie">
     <div class="auth-kaart">
         <h2>Account Aanmaken</h2>
-        <p class="auth-sub">Registreer uzelff voor toegang tot exclusieve voordelen</p>
+        <p class="auth-sub">Registreer uzelf om kamers te reserveren</p>
 
         <?php if ($bericht): ?>
             <div class="bericht <?php echo $bericht_type === 'succes' ? 'bericht-succes' : 'bericht-fout'; ?>">
