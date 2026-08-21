@@ -927,6 +927,95 @@ img {
 }
 
 /* ========================================
+   RESERVERINGSPAGINA
+   ======================================== */
+.reservering-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+.reservering-formulier {
+    background: var(--wit);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(181, 146, 92, 0.15);
+}
+
+.reservering-formulier h3 {
+    font-size: 1.5rem;
+    color: var(--goud);
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--licht-geel);
+}
+
+.reservering-info-kaart {
+    background: var(--wit);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(181, 146, 92, 0.15);
+    align-self: end;
+}
+
+.reservering-info-kaart h3 {
+    font-size: 1.5rem;
+    color: var(--goud);
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--licht-geel);
+}
+
+.reservering-info-kaart .info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(181, 146, 92, 0.1);
+}
+
+.reservering-info-kaart .info-item:last-child {
+    border-bottom: none;
+}
+
+.reservering-info-kaart .info-icoon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--goud), #D4AF7A);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: var(--wit);
+}
+
+.reservering-info-kaart .info-tekst h4 {
+    font-size: 1rem;
+    color: var(--tekst);
+    margin-bottom: 5px;
+}
+
+.reservering-info-kaart .info-tekst p {
+    color: var(--tekst-licht);
+    font-size: 0.9rem;
+}
+
+.reservering-info-kaart .info-tekst a {
+    color: var(--goud);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.reservering-info-kaart .info-tekst a:hover {
+    color: var(--paars);
+}
+
+/* ========================================
    FOOTER
    ======================================== */
 .footer {
@@ -1145,7 +1234,8 @@ img {
 
     .restaurant-content,
     .verhaal-sectie,
-    .contact-layout {
+    .contact-layout,
+    .reservering-layout {
         grid-template-columns: 1fr;
     }
 

@@ -19,6 +19,23 @@ CREATE TABLE IF NOT EXISTS Kamer (
     aangemaakt_op TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+INSERT IGNORE INTO Kamer (id, kamer_nummer, kamer_type, prijs_per_nacht, beschikbaar) VALUES
+(1, 101, 'Standaard Kamer', 89.00, 1),
+(2, 102, 'Standaard Kamer', 89.00, 1),
+(3, 103, 'Standaard Kamer', 89.00, 1),
+(4, 201, 'Luxe Kamer', 139.00, 1),
+(5, 202, 'Luxe Kamer', 139.00, 1),
+(6, 203, 'Luxe Kamer', 139.00, 1),
+(7, 301, 'President Suite', 199.00, 1),
+(8, 302, 'President Suite', 199.00, 1),
+(9, 401, 'Familie Kamer', 109.00, 1),
+(10, 402, 'Familie Kamer', 109.00, 1),
+(11, 403, 'Familie Kamer', 109.00, 1),
+(12, 501, 'Business Suite', 169.00, 1),
+(13, 502, 'Business Suite', 169.00, 1),
+(14, 601, 'Romantische Suite', 249.00, 1),
+(15, 602, 'Romantische Suite', 249.00, 1);
+
 CREATE TABLE IF NOT EXISTS Reserveringen (
     id INT AUTO_INCREMENT PRIMARY KEY,
     Gebruikers_id INT NOT NULL,
