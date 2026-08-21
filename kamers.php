@@ -4,8 +4,10 @@
 
 <section class="pagina-banner">
     <div>
-        <h1>Onze Kamers</h1>
-        <p>Ontdek ons aanbod van comfortabele en luxe kamers</p>
+        <h1>Ontdek onze Kamers</h1>
+        <p>Welkom in het 3-duimen Hotel De Zonne Vallei, waar luxe en comfort hand in hand gaan. Gelegen in het hart van Alkmaar, bieden onze kamers een perfecte balans tussen modern design en gezelligheid. 
+            Of u nu voor een romantisch uitje, een familievakantie of een zakelijke bijeenkomst komt, ons hotel heeft precies wat u nodig heeft voor een onvergetelijk verblijf.
+            Geniet van de rust en elegantie van onze kamers en ervaar de uitzonderlijke gastvrijheid die ons hotel kenmerkt.</p>
         <div class="breadcrumb"><a href="index.php">Home</a> / Kamers</div>
     </div>
 </section>
@@ -24,8 +26,9 @@
                 <span class="kamer-prijs">Vanaf &euro;89,- /nacht</span>
             </div>
             <div class="kamer-info">
-                <h3>Standaard Kamer</h3>
-                <p>Een comfortabele kamer met alle basisvoorzieningen voor een aangenaam verblijf. Perfect voor de individuele reiziger of het stel dat er even tussenuit wil.</p>
+                <h3>Comfort Kamer</h3>
+                <p>Onze Comfort Kamer biedt een serene ontsnapping met alle basisvoorzieningen die u nodig heeft. 
+                    Geniet van een comfortabel bed, een moderne badkamer en een prachtig uitzicht op de stad. Perfect voor een kort verblijf of een zakenreis.</p>
                 <div class="kamer-kenmerken">
                     <span class="kamer-kenmerk">2 Personen</span>
                     <span class="kamer-kenmerk">25 m&sup2;</span>
@@ -42,13 +45,15 @@
                 <span class="kamer-prijs">Vanaf &euro;139,- /nacht</span>
             </div>
             <div class="kamer-info">
-                <h3>Luxe Kamer</h3>
-                <p>Geniet van extra ruimte, premium voorzieningen en een prachtig uitzicht. Ideaal voor wie wat extra's wil tijdens zijn verblijf.</p>
+                <h3>Deluxe Kamer</h3>
+                <p>Voor degenen die net dat beetje extra comfort willen, is onze Deluxe Kamer de perfecte keuze. 
+                    Deze kamers zijn ruimer en beschikken over luxere voorzieningen, zoals een zithoek en een Nespresso-apparaat. 
+                    De ideale plek om te ontspannen na een dag vol ontdekkingen in Alkmaar.</p>
                 <div class="kamer-kenmerken">
                     <span class="kamer-kenmerk">2 Personen</span>
                     <span class="kamer-kenmerk">35 m&sup2;</span>
-                    <span class="kamer-kenmerk">Balkon</span>
-                    <span class="kamer-kenmerk">Minibar</span>
+                    <span class="kamer-kenmerk">Zithoek</span>
+                    <span class="kamer-kenmerk">Nespresso-apparaat</span>
                     <span class="kamer-kenmerk">Badjas</span>
                 </div>
                 <a href="reserverings_syteem.php" class="btn-kamer">Reserveer Nu</a>
@@ -60,14 +65,14 @@
                 <span class="kamer-prijs">Vanaf &euro;199,- /nacht</span>
             </div>
             <div class="kamer-info">
-                <h3>President Suite</h3>
-                <p>De ultieme luxe ervaring met een ruime suite, jacuzzi en panoramisch uitzicht. Voor de meest veeleisende gasten.</p>
+                <h3>Junior Suite</h3>
+                <p>Onze Junior Suites bieden een ultieme combinatie van ruimte en luxe. 
+                    Met een aparte woonkamer, een ruime badkamer en een balkon met een adembenemend uitzicht, is deze kamer perfect voor een romantisch uitje of een speciale gelegenheid.</p>
                 <div class="kamer-kenmerken">
-                    <span class="kamer-kenmerk">4 Personen</span>
+                    <span class="kamer-kenmerk">2 Personen</span>
                     <span class="kamer-kenmerk">60 m&sup2;</span>
-                    <span class="kamer-kenmerk">Jacuzzi</span>
-                    <span class="kamer-kenmerk">Panorama</span>
-                    <span class="kamer-kenmerk">Butler</span>
+                    <span class="kamer-kenmerk">Apparte woonkamer</span>
+                    <span class="kamer-kenmerk">Balkon met mooi uitzicht</span>
                 </div>
                 <a href="reserverings_syteem.php" class="btn-kamer">Reserveer Nu</a>
             </div>
@@ -78,14 +83,17 @@
                 <span class="kamer-prijs">Vanaf &euro;109,- /nacht</span>
             </div>
             <div class="kamer-info">
-                <h3>Familie Kamer</h3>
-                <p>Ruime kamer ideaal voor gezinnen met kinderen. Twee aparte slaapgedeeltes en alle gemakken voor het hele gezin.</p>
+                <h3>Familie Suite</h3>
+                <p>Speciaal ontworpen voor gezinnen, biedt onze Familie Suite voldoende ruimte en comfort voor iedereen. 
+                    Deze suites beschikken over twee aparte slaapkamers, een ruime woonkamer en extra voorzieningen zoals een kitchenette en speelhoek voor de kinderen. 
+                    De perfecte thuisbasis voor een onvergetelijke familievakantie.</p>
                 <div class="kamer-kenmerken">
                     <span class="kamer-kenmerk">4 Personen</span>
                     <span class="kamer-kenmerk">40 m&sup2;</span>
                     <span class="kamer-kenmerk">2 Slaapkamers</span>
-                    <span class="kamer-kenmerk">Wifi</span>
-                    <span class="kamer-kenmerk">TV</span>
+                    <span class="kamer-kenmerk">Woonkamer</span>
+                    <span class="kamer-kenmerk">Kitchenette</span>
+                    <span class="kamer-kenmerk">Speelhoek</span>
                 </div>
                 <a href="reserverings_syteem.php" class="btn-kamer">Reserveer Nu</a>
             </div>
@@ -96,32 +104,18 @@
                 <span class="kamer-prijs">Vanaf &euro;169,- /nacht</span>
             </div>
             <div class="kamer-info">
-                <h3>Business Suite</h3>
-                <p>Voor de zakelijke reiziger: een suite met aparte werkruimte, snelle wifi en alle voorzieningen om productief te blijven.</p>
+                <h3>Bruidssuite</h3>
+                <p>Onze Bruidssuite is de ultieme romantische ontsnapping voor pasgetrouwde stellen. 
+                    Deze luxueuze suite biedt een ruime slaapkamer met een kingsize bed, een stijlvolle woonkamer en een eigen balkon met een prachtig uitzicht op Alkmaar. 
+                    Geniet van extra's zoals een bubbelbad, rozenblaadjes op het bed en een fles champagne om uw speciale gelegenheid te vieren in stijl.</p>
                 <div class="kamer-kenmerken">
                     <span class="kamer-kenmerk">2 Personen</span>
                     <span class="kamer-kenmerk">45 m&sup2;</span>
-                    <span class="kamer-kenmerk">Werkplek</span>
-                    <span class="kamer-kenmerk">Snelle Wifi</span>
-                    <span class="kamer-kenmerk">Koffiezet</span>
-                </div>
-                <a href="reserverings_syteem.php" class="btn-kamer">Reserveer Nu</a>
-            </div>
-        </div>
-
-        <div class="kamer-kaart">
-            <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=600&q=80')">
-                <span class="kamer-prijs">Vanaf &euro;249,- /nacht</span>
-            </div>
-            <div class="kamer-info">
-                <h3>Romantische Suite</h3>
-                <p>Speciaal voor koppels: een suite met priv jacuzzi, rozenblaadjes en een adembenemend uitzicht voor een onvergetelijk verblijf.</p>
-                <div class="kamer-kenmerken">
-                    <span class="kamer-kenmerk">2 Personen</span>
-                    <span class="kamer-kenmerk">50 m&sup2;</span>
-                    <span class="kamer-kenmerk">Priv Jacuzzi</span>
+                    <span class="kamer-kenmerk">Kingsize Bed</span>
+                    <span class="kamer-kenmerk">Balkon</span>
+                    <span class="kamer-kenmerk">bubbelbad</span>
+                    <span class="kamer-kenmerk">Rozenblaadjes</span>
                     <span class="kamer-kenmerk">Champagne</span>
-                    <span class="kamer-kenmerk">Uitzicht</span>
                 </div>
                 <a href="reserverings_syteem.php" class="btn-kamer">Reserveer Nu</a>
             </div>
