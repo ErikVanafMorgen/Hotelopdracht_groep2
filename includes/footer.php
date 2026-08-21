@@ -24,9 +24,9 @@
             <ul>
                 <li><a href="kamers.php">Kamers</a></li>
                 <li><a href="restaurant.php">Restaurant</a></li>
-                <li><a href="#">Wellness</a></li>
-                <li><a href="#">Zwembad</a></li>
-                <li><a href="#">Parkeren</a></li>
+                <li><a href="contact.php">Wellness</a></li>
+                <li><a href="contact.php">Zwembad</a></li>
+                <li><a href="contact.php">Parkeren</a></li>
             </ul>
         </div>
         <div class="footer-kolom">
