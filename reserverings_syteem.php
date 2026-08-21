@@ -12,14 +12,15 @@ $bericht_type = '';
 
 include 'includes/connectie.php';
 
-$kamers = $pdo->query("SELECT id, kamer_type, kamer_nummer, prijs_per_nacht FROM Kamer WHERE beschikbaar = 1 ORDER BY kamer_type, kamer_nummer")->fetchAll(PDO::FETCH_ASSOC);
+$kamer_types = $pdo->query("SELECT DISTINCT kamer_type FROM Kamer ORDER BY kamer_type")->fetchAll(PDO::FETCH_COLUMN);
 
 if (isset($_POST['verstuur'])) {
-    $kamer_id = intval($_POST['kamer_id'] ?? 0);
+    $kamer_type = trim($_POST['kamer_type'] ?? '');
     $start_datum = trim($_POST['start_datum'] ?? '');
     $eind_datum = trim($_POST['eind_datum'] ?? '');
+    $creditcardnummer = preg_replace('/\D+/', '', $_POST['creditcardnummer'] ?? '');
 
-    if ($kamer_id && $start_datum && $eind_datum) {
+    if ($kamer_type && $start_datum && $eind_datum && $creditcardnummer) {
         if ($start_datum < date('Y-m-d')) {
             $bericht = "U kunt niet in het verleden reserveren.";
             $bericht_type = 'fout';
@@ -29,32 +30,67 @@ if (isset($_POST['verstuur'])) {
         } elseif ($start_datum >= $eind_datum) {
             $bericht = "De einddatum moet na de startdatum liggen.";
             $bericht_type = 'fout';
+        } elseif (strlen($creditcardnummer) < 13 || strlen($creditcardnummer) > 19) {
+            $bericht = "Voer een geldig creditcardnummer in.";
+            $bericht_type = 'fout';
         } else {
             try {
-                $stmt_kamer = $pdo->prepare("SELECT id, kamer_type FROM Kamer WHERE id = :id");
-                $stmt_kamer->execute([':id' => $kamer_id]);
+                $stmt_kamer = $pdo->prepare("SELECT k.id, k.kamer_nummer, k.kamer_type, k.prijs_per_nacht
+                    FROM Kamer k
+                    WHERE k.kamer_type = :kamer_type
+                        AND k.beschikbaar = 1
+                        AND NOT EXISTS (
+                            SELECT 1 FROM Reserveringen r
+                            WHERE r.kamer_id = k.id
+                                AND NOT (r.eind_datum <= :start OR r.start_datum >= :eind)
+                        )
+                    ORDER BY k.kamer_nummer
+                    LIMIT 1");
+                $stmt_kamer->execute([
+                    ':kamer_type' => $kamer_type,
+                    ':start' => $start_datum,
+                    ':eind' => $eind_datum
+                ]);
                 $kamer = $stmt_kamer->fetch(PDO::FETCH_ASSOC);
 
                 if (!$kamer) {
-                    $bericht = "De geselecteerde kamer bestaat niet.";
+                    $bericht = "Dit kamertype is helaas niet beschikbaar in de geselecteerde periode.";
                     $bericht_type = 'fout';
                 } else {
-                    $check = $pdo->prepare("SELECT COUNT(*) FROM Reserveringen WHERE kamer_id = :kamer_id AND NOT (eind_datum <= :start OR start_datum >= :eind)");
-                    $check->execute([':kamer_id' => $kamer_id, ':start' => $start_datum, ':eind' => $eind_datum]);
+                    $stmt_gebruiker = $pdo->prepare("SELECT email FROM Gebruikers WHERE id = :id");
+                    $stmt_gebruiker->execute([':id' => $_SESSION['gebruiker_id']]);
+                    $gebruiker = $stmt_gebruiker->fetch(PDO::FETCH_ASSOC);
 
-                    if ($check->fetchColumn() > 0) {
-                        $bericht = "Deze kamer is helaas niet beschikbaar in de geselecteerde periode. Kies een andere datum of kamer.";
+                    if (!$gebruiker || !filter_var($gebruiker['email'], FILTER_VALIDATE_EMAIL)) {
+                        $bericht = "Uw account heeft geen geldig e-mailadres. Pas uw accountgegevens aan en probeer opnieuw.";
                         $bericht_type = 'fout';
                     } else {
-                        $stmt = $pdo->prepare("INSERT INTO Reserveringen (Gebruikers_id, kamer_id, kamer_type, start_datum, eind_datum) VALUES (:gebruiker, :kamer_id, :kamer_type, :start, :eind)");
+                        $stmt = $pdo->prepare("INSERT INTO Reserveringen (email, Gebruikers_id, kamer_id, kamer_type, start_datum, eind_datum, creditcardnummer) VALUES (:email, :gebruiker, :kamer_id, :kamer_type, :start, :eind, :creditcard)");
                         $stmt->execute([
+                            ':email' => $gebruiker['email'],
                             ':gebruiker' => $_SESSION['gebruiker_id'],
-                            ':kamer_id' => $kamer_id,
+                            ':kamer_id' => $kamer['id'],
                             ':kamer_type' => $kamer['kamer_type'],
                             ':start' => $start_datum,
-                            ':eind' => $eind_datum
+                            ':eind' => $eind_datum,
+                            ':creditcard' => '**** **** **** ' . substr($creditcardnummer, -4)
                         ]);
-                        $bericht = "Uw reservering is succesvol geplaatst! Wij zien u graag verschijnen.";
+
+                        $onderwerp = 'Verificatie van uw reservering - Hotel Zonne Vallei';
+                        $mailbericht = "Beste gast,\n\nUw reservering is ontvangen.\n\n" .
+                            "Kamer_type: {$kamer['kamer_type']}\n" .
+                            "Aankomst: {$start_datum}\n" .
+                            "Vertrek: {$eind_datum}\n" .
+                            "Kamer_nummer/ID: {$kamer['kamer_nummer']} / {$kamer['id']}\n" .
+                            "Prijs per nacht: €" . number_format($kamer['prijs_per_nacht'], 2, ',', '.') . "\n\n" .
+                            "Met vriendelijke groet,\nHotel Zonne Vallei";
+                        $afzender = getenv('MAIL_FROM') ?: 'reserveringen@zonnevallei.nl';
+                        $headers = "From: {$afzender}\r\nReply-To: {$afzender}\r\nContent-Type: text/plain; charset=UTF-8\r\n";
+                        $mail_verstuurd = mail($gebruiker['email'], $onderwerp, $mailbericht, $headers);
+
+                        $bericht = $mail_verstuurd
+                            ? "Uw reservering is succesvol geplaatst. De verificatie is naar uw e-mailadres verzonden."
+                            : "Uw reservering is succesvol geplaatst. De e-mail kon niet worden verzonden; controleer uw mailconfiguratie.";
                         $bericht_type = 'succes';
                     }
                 }
@@ -101,11 +137,11 @@ if (isset($_POST['verstuur'])) {
             <form method="POST" action="reserverings_syteem.php">
                 <div class="formulier-rij">
                     <div class="formulier-veld full">
-                        <label for="kamer_id">Kamer</label>
-                        <select id="kamer_id" name="kamer_id" required>
-                            <option value="" disabled selected>Selecteer een kamer</option>
-                            <?php foreach ($kamers as $k): ?>
-                                <option value="<?php echo $k['id']; ?>"><?php echo htmlspecialchars($k['kamer_type'] . ' — Kamer ' . $k['kamer_nummer'] . ' (€' . number_format($k['prijs_per_nacht'], 2, ',', '.') . '/nacht)'); ?></option>
+                        <label for="kamer_type">Kamer_type</label>
+                        <select id="kamer_type" name="kamer_type" required>
+                            <option value="" disabled selected>Selecteer een kamertype</option>
+                            <?php foreach ($kamer_types as $type): ?>
+                                <option value="<?php echo htmlspecialchars($type, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($type, ENT_QUOTES, 'UTF-8'); ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -118,6 +154,12 @@ if (isset($_POST['verstuur'])) {
                     <div class="formulier-veld">
                         <label for="eind_datum">Vertrek</label>
                         <input type="date" id="eind_datum" name="eind_datum" min="<?php echo date('Y-m-d', strtotime('+1 day')); ?>" max="<?php echo date('Y-m-d', strtotime('+1 year +1 day')); ?>" required>
+                    </div>
+                </div>
+                <div class="formulier-rij">
+                    <div class="formulier-veld full">
+                        <label for="creditcardnummer">Creditcardnummer</label>
+                        <input type="text" id="creditcardnummer" name="creditcardnummer" inputmode="numeric" autocomplete="cc-number" minlength="13" maxlength="23" pattern="[0-9 ]{13,23}" placeholder="1234 5678 9012 3456" required>
                     </div>
                 </div>
                 <button type="submit" class="btn-verstuur" name="verstuur">Reserveer Nu</button>

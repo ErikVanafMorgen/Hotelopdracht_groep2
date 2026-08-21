@@ -145,7 +145,7 @@
                 <div class="menu-item">
                     <div class="menu-item-nam">
                         <h4>Kipnuggets</h4>
-                        <p>Geserveerd met appelmoes en een klein salade.</p>
+                        <p>Geserveerd met appelmoes en een kleine salade.</p>
                     </div>
                     <span class="menu-item-prijs">&euro;10,50</span>
                 </div>
