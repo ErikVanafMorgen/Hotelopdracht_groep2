@@ -5,8 +5,10 @@
 <section class="hero">
     <div class="hero-content">
         <p class="hero-subtitle">Welkom bij</p>
-        <h1>Hotel Zonne Vallei</h1>
-        <p>Ontspan en geniet van luxe accommodatie, culinaire verwennerij en ongeëvenaarde gastvrijheid in het hart van de natuur.</p>
+        <h1>Welkom bij Hotel De Zonne Vallei</h1>
+        <p>Ontsnap aan de dagelijkse drukte en ontdek de rust en luxe van Hotel De Zonne Vallei, een 3-duimen hotel gelegen in het hart van Alkmaar. 
+            Ons hotel biedt een perfecte mix van comfort, gastvrijheid en adembenemende natuur. 
+            Of u nu voor een romantisch uitje, een familievakantie of een zakelijke bijeenkomst komt, ons hotel heeft precies wat u nodig heeft voor een onvergetelijk verblijf.</p>
         <div class="hero-buttons">
             <a href="kamers.php" class="btn-primary">Bekijk Kamers</a>
             <a href="contact.php" class="btn-secondary">Neem Contact Op</a>
@@ -24,18 +26,23 @@
     <div class="voordelen-grid">
         <div class="voordeel-kaart">
             <div class="voordeel-icoon">&#9734;</div>
-            <h3>Luxe Kamers</h3>
-            <p>Onze kamers zijn elegant ingericht met alle moderne voorzieningen voor uw ultieme comfort en ontspanning.</p>
+            <h3>Ontdek onze kamers</h3>
+            <p>Of u nu op zoek bent naar een romantisch uitje, een familievakantie of een zakelijke bijeenkomst, onze stijlvolle en goed uitgeruste kamers bieden alles wat u nodig heeft voor een onvergetelijk verblijf.
+                Geniet van moderne voorzieningen, comfortabele bedden en een prachtig uitzicht op de omgeving.</p>
         </div>
         <div class="voordeel-kaart">
             <div class="voordeel-icoon">&#9829;</div>
-            <h3>Culinair Genieten</h3>
-            <p>Ons restaurant biedt een culinaire reis met verse, lokale ingredinten en internationale smaken.</p>
+            <h3>Culinaire Verwennerij</h3>
+            <p>Laat uw smaakpapillen prikkelen in ons restaurant, waar onze chef-kok met passie lokale ingrediënten omtovert tot culinaire meesterwerken. 
+                Van een uitgebreid ontbijt tot een intiem diner, elke maaltijd is een ervaring op zich. Ontdek ons menu en geniet van de smaken van Alkmaar.</p>
         </div>
         <div class="voordeel-kaart">
             <div class="voordeel-icoon">&#9788;</div>
-            <h3>Schitterende Locatie</h3>
-            <p>Gelegen in een prachtige omgeving, perfect voor wie op zoek is naar rust en natuur.</p>
+            <h3>Ontdek de omgeving</h3>
+            <p>Hotel De Zonne Vallei ligt in het bruisende hart van Alkmaar, een stad die rijk is aan geschiedenis en cultuur. 
+                Verken de pittoreske straatjes, bewonder de eeuwenoude architectuur en bezoek de wereldberoemde kaasmarkt. 
+                Of u nu winkelt in de boetiekjes, geniet van een drankje op een van de vele terrassen of een ontspannen wandeling maakt langs de grachten, Alkmaar biedt voor ieder wat wils. 
+                Ontdek de schoonheid en charme van deze historische stad tijdens uw verblijf in ons hotel.</p>
         </div>
     </div>
 </section>
