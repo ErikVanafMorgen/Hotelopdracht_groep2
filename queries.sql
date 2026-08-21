@@ -10,10 +10,19 @@ CREATE TABLE IF NOT EXISTS gebruikers (
     aangemaakt_op TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+CREATE TABLE IF NOT EXISTS Kamer (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    kamer_nummer INT NOT NULL UNIQUE,
+    kamer_type VARCHAR(50) NOT NULL,
+    prijs_per_nacht DECIMAL(10,2) NOT NULL,
+    beschikbaar BOOLEAN DEFAULT TRUE,
+    aangemaakt_op TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE IF NOT EXISTS Reserveringen (
     id INT AUTO_INCREMENT PRIMARY KEY,
     Gebruikers_id INT NOT NULL,
-    kamer_id INT NOT NULL AUTO_INCREMENT,
+    kamer_id INT NOT NULL,
     kamer_type VARCHAR(50) NOT NULL,
     start_datum DATE NOT NULL,
     eind_datum DATE NOT NULL,
