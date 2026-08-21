@@ -26,23 +26,18 @@
     <div class="voordelen-grid">
         <div class="voordeel-kaart">
             <div class="voordeel-icoon">&#9734;</div>
-            <h3>Ontdek onze kamers</h3>
-            <p>Of u nu op zoek bent naar een romantisch uitje, een familievakantie of een zakelijke bijeenkomst, onze stijlvolle en goed uitgeruste kamers bieden alles wat u nodig heeft voor een onvergetelijk verblijf.
-                Geniet van moderne voorzieningen, comfortabele bedden en een prachtig uitzicht op de omgeving.</p>
+            <h3>Stijlvolle Kamers</h3>
+            <p>Modern ingericht, comfortabel en altijd met uitzicht. Van compacte kamers tot ruime suites — er is altijd een kamer die bij u past.</p>
         </div>
         <div class="voordeel-kaart">
             <div class="voordeel-icoon">&#9829;</div>
             <h3>Culinaire Verwennerij</h3>
-            <p>Laat uw smaakpapillen prikkelen in ons restaurant, waar onze chef-kok met passie lokale ingrediënten omtovert tot culinaire meesterwerken. 
-                Van een uitgebreid ontbijt tot een intiem diner, elke maaltijd is een ervaring op zich. Ontdek ons menu en geniet van de smaken van Alkmaar.</p>
+            <p>Verse seizoensproducten, bereid met passie door onze chef-kok. Van een uitgebreid ontbijt tot een verfijnd diner — elke maaltijd is een ervaring op zich.</p>
         </div>
         <div class="voordeel-kaart">
             <div class="voordeel-icoon">&#9788;</div>
-            <h3>Ontdek de omgeving</h3>
-            <p>Hotel De Zonne Vallei ligt in het bruisende hart van Alkmaar, een stad die rijk is aan geschiedenis en cultuur. 
-                Verken de pittoreske straatjes, bewonder de eeuwenoude architectuur en bezoek de wereldberoemde kaasmarkt. 
-                Of u nu winkelt in de boetiekjes, geniet van een drankje op een van de vele terrassen of een ontspannen wandeling maakt langs de grachten, Alkmaar biedt voor ieder wat wils. 
-                Ontdek de schoonheid en charme van deze historische stad tijdens uw verblijf in ons hotel.</p>
+            <h3>Historisch Alkmaar</h3>
+            <p>Pittoreske straatjes, de wereldberoemde kaasmarkt en sfeervolle terrassen. Alkmaar heeft alles voor een onvergetelijke dag uit.</p>
         </div>
     </div>
 </section>
@@ -110,13 +105,12 @@
         <span class="ondertitel">Ons Restaurant</span>
         <h2>Culinaire Verwennerij</h2>
         <div class="lijn"></div>
-        <p>Laat u verwennen door onze chef-kok met gerechten bereid van de beste lokale ingredinten.</p>
     </div>
     <div class="restaurant-content">
         <div>
             <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--goud); margin-bottom: 20px;">Ontbijt, Lunch & Diner</h3>
-            <p style="color: var(--tekst-licht); line-height: 1.8; margin-bottom: 15px;">Ons keukenteam staat elke dag voor u klaar met verse gerechten. Van een uitgebreid ontbijt tot een verfijnd driegangendiner, bij ons vindt u altijd iets naar uw smaak.</p>
-            <p style="color: var(--tekst-licht); line-height: 1.8; margin-bottom: 25px;">Wij werken uitsluitend met seizoensgebonden en lokale producten om de beste kwaliteit te garanderen. Ons menu wisselt regelmatig zodat u altijd iets nieuws kunt ontdekken.</p>
+            <p style="color: var(--tekst); line-height: 1.8; margin-bottom: 15px;">Verse ingrediënten, lokale producten en pure passie — dat proeft u in elke hap. Onze chef-kok creëert dagelijks gerechten die verrassen.</p>
+            <p style="color: var(--tekst-licht); line-height: 1.8; margin-bottom: 25px;">Van een rustig ontbijt tot een verfijnd driegangendiner. Ons menu wisselt met de seizoenen, zodat er altijd iets nieuws op u wacht.</p>
             <a href="restaurant.php" class="btn-primary">Bekijk Ons Menu</a>
         </div>
         <div style="background: var(--wit); padding: 40px; border-radius: 10px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); border: 1px solid rgba(181,146,92,0.15);">
