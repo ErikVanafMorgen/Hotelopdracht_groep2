@@ -22,14 +22,6 @@ CREATE TABLE IF NOT EXISTS Reserveringen (
     FOREIGN KEY (kamer_id) REFERENCES Kamer(id)
 );
 
-CREATE TABLE IF NOT EXISTS Restaurant (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    naam VARCHAR(100) NOT NULL,
-    locatie VARCHAR(255) NOT NULL,
-    openingstijden VARCHAR(100) NOT NULL,
-    aangemaakt_op TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
 CREATE TABLE IF NOT EXISTS Contact (
     id INT AUTO_INCREMENT PRIMARY KEY,
     Gebruikers_id INT,

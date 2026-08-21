@@ -53,7 +53,7 @@ if (isset($_POST['verstuur'])) {
                 <div class="info-icoon">&#9900;</div>
                 <div class="info-tekst">
                     <h4>Adres</h4>
-                    <p>Zonnevaleiweg 42<br>1234 AB Zonnevallei</p>
+                    <p>Zonnevalleiweg 42<br>1234 AB Zonnevallei</p>
                 </div>
             </div>
 
@@ -69,7 +69,7 @@ if (isset($_POST['verstuur'])) {
                 <div class="info-icoon">&#9993;</div>
                 <div class="info-tekst">
                     <h4>E-mail</h4>
-                    <p>info@zonnevalei.nl<br>reserveringen@zonnevalei.nl</p>
+                    <p>info@zonnevallei.nl<br>reserveringen@zonnevallei.nl</p>
                 </div>
             </div>
 
@@ -115,7 +115,6 @@ if (isset($_POST['verstuur'])) {
                             <option value="Reservering">Reservering</option>
                             <option value="Restaurant">Restaurant</option>
                             <option value="Klacht">Klacht</option>
-                            <option value="Samenwerking">Samenwerking</option>
                         </select>
                     </div>
                 </div>
