@@ -33,7 +33,7 @@
             <h4>Contact</h4>
             <ul>
                 <li><a href="contact.php">Zonnevalleiweg 42</a></li>
-                <li><a href="contact.php">1234 AB, Zonnevallei</a></li>
+                <li><a href="contact.php">1234 AB, Alkmaar</a></li>
                 <li><a href="tel:+31201234567">+31 20 123 4567</a></li>
                 <li><a href="mailto:info@zonnevallei.nl">info@zonnevallei.nl</a></li>
             </ul>
