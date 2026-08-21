@@ -4,8 +4,8 @@
 
 <section class="ons-hero">
     <div>
-        <h1>Over Ons</h1>
-        <p>Leer het verhaal achter Hotel Zonne Vallei en ontmoet het team dat uw verblijf bijzonder maakt</p>
+        <h1>Welkom bij Hotel Zonne Vallei</h1>
+        <p>Bij Hotel De Zonne Vallei streven we ernaar om elke gast een onvergetelijke ervaring te bieden, doordrenkt met luxe, comfort en uitzonderlijke gastvrijheid.Gelegen in het hart van Alkmaar, biedt ons hotel de perfecte uitvalsbasis om deze historische en charmante stad te ontdekken.</p>
         <div class="breadcrumb"><a href="index.php">Home</a> / Over Ons</div>
     </div>
 </section>
@@ -15,40 +15,29 @@
         <div class="verhaal-afbeelding"></div>
         <div class="verhaal-tekst">
             <span class="ondertitel" style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 4px; color: var(--goud); display: block; margin-bottom: 10px;">Ons Verhaal</span>
-            <h3>Een Familiebedrijf Met Passie</h3>
-            <p>Hotel Zonne Vallei werd opgericht in 2005 door de familie Van der Berg. Wat begon als een klein familiebedrijf is uitgegroeid tot een van de meest geliefde hotels in de regio.</p>
-            <p>Al meer dan 20 jaar verwelkomen wij gasten van over de hele wereld. Onze passie voor gastvrijheid zit in alles wat wij doen, van de zorgvuldig ingerichte kamers tot de persoonlijke aandacht voor elke gast.</p>
-            <p>Wij geloven dat een verblijf bij ons meer is dan alleen een nacht weg - het is een ervaring die u bijblijft.</p>
+            <h3>Ons verhaal</h3>
+            <p>Hotel De Zonne Vallei is opgericht door Bouke van Zon, een visionaire ondernemer met een passie voor gastvrijheid en een scherp oog voor detail. 
+                Met jarenlange ervaring in de horeca-industrie heeft Bouke zijn droom verwezenlijkt om een uniek hotel te creëren waar gasten zich thuis voelen en kunnen genieten van alle gemakken en luxe die het leven te bieden heeft.</p>
         </div>
     </div>
 </section>
 
 <section class="sectie">
     <div class="sectie-kop">
-        <span class="ondertitel">Het Team</span>
-        <h2>Ontmoet Ons Team</h2>
-        <div class="lijn"></div>
-        <p>De mensen achter Hotel Zonne Valei die elke dag hun best doen om uw verblijf onvergetelijk te maken.</p>
+        <span class="ondertitel"></span>
+        <div class="lijn">Onze Waarden</div>
+        <p>Bij Hotel De Zonne Vallei staan kwaliteit, gastvrijheid en persoonlijke service centraal. 
+            Wij geloven dat elk detail bijdraagt aan een perfecte ervaring, van de smaakvolle inrichting van onze kamers tot de culinaire hoogstandjes in ons restaurant. 
+            Ons toegewijde team staat altijd klaar om aan al uw wensen te voldoen en ervoor te zorgen dat uw verblijf zo aangenaam mogelijk is.</p>
     </div>
-    <div class="team-grid">
-        <div class="team-lid">
-            <div class="team-foto">MvB</div>
-            <h4>Mark van der Berg</h4>
-            <p class="functie">Directeur & Eigenaar</p>
-            <p>Met meer dan 20 jaar ervaring in de hotellerie leidt Mark het team met passie en toewijding.</p>
-        </div>
-        <div class="team-lid">
-            <div class="team-foto">LvB</div>
-            <h4>Laura van der Berg</h4>
-            <p class="functie">Hotel Manager</p>
-            <p>Laura zorgt ervoor dat alles op rolletjes loopt en dat elke gast een onvergetelijke ervaring heeft.</p>
-        </div>
-        <div class="team-lid">
-            <div class="team-foto">TK</div>
-            <h4>Thomas de Keizer</h4>
-            <p class="functie">Chef-kok</p>
-            <p>Thomas brengt culinaire creativiteit naar ons restaurant met verse, lokale ingredienten.</p>
-        </div>
+</section>
+
+<section class="sectie">
+    <div class="sectie-kop">
+        <span class="ondertitel"></span>
+        <div class="lijn">Ons Team</div>
+        <p>Ons team van enthousiaste en professionele medewerkers deelt de visie van Bouke van Zon om elke gast een warm welkom en een onvergetelijk verblijf te bieden. 
+            Van de receptie tot het restaurant en de huishouding, elk teamlid speelt een cruciale rol in het creëren van de unieke sfeer en ervaring waar Hotel De Zonne Vallei om bekend staat.</p>
     </div>
 </section>
 
