@@ -80,7 +80,7 @@
 
         <div class="kamer-kaart">
             <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80')">
-                <span class="kamer-prijs">Vanaf &euro;109,- /nacht</span>
+                <span class="kamer-prijs">Vanaf &euro;179,- /nacht</span>
             </div>
             <div class="kamer-info">
                 <h3>Familie Suite</h3>
@@ -89,7 +89,7 @@
                     De perfecte thuisbasis voor een onvergetelijke familievakantie.</p>
                 <div class="kamer-kenmerken">
                     <span class="kamer-kenmerk">4 Personen</span>
-                    <span class="kamer-kenmerk">40 m&sup2;</span>
+                    <span class="kamer-kenmerk">2x25 m&sup2;</span>
                     <span class="kamer-kenmerk">2 Slaapkamers</span>
                     <span class="kamer-kenmerk">Woonkamer</span>
                     <span class="kamer-kenmerk">Kitchenette</span>
