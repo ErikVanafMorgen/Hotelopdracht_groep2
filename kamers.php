@@ -32,21 +32,105 @@ $kamer_afbeeldingen = [
     </div>
 
     <div class="kamers-grid">
-        <?php foreach ($kamers as $kamer): ?>
-            <div class="kamer-kaart">
-                <div class="kamer-afbeelding" style="background-image: url('<?php echo htmlspecialchars($kamer_afbeeldingen[$kamer['kamer_type']] ?? $kamer_afbeeldingen['Comfort Kamer'], ENT_QUOTES, 'UTF-8'); ?>')">
-                    <span class="kamer-prijs">&euro;<?php echo number_format((float) $kamer['prijs_per_nacht'], 2, ',', '.'); ?> /nacht</span>
-                </div>
-                <div class="kamer-info">
-                    <h3><?php echo htmlspecialchars($kamer['kamer_type'], ENT_QUOTES, 'UTF-8'); ?> #<?php echo (int) $kamer['kamer_nummer']; ?></h3>
-                    <p>Een comfortabele kamer bij Hotel Zonne Vallei, ingericht voor een aangenaam verblijf.</p>
-                    <div class="kamer-kenmerken">
-                        <span class="kamer-kenmerk"><?php echo $kamer['beschikbaar'] ? 'Beschikbaar' : 'Niet beschikbaar'; ?></span>
-                    </div>
-                    <?php if ($kamer['beschikbaar']): ?><a href="reserverings_syteem.php" class="btn-kamer">Reserveer Nu</a><?php endif; ?>
-                </div>
+        <div class="kamer-kaart">
+            <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&q=80')">
+                <span class="kamer-prijs">Vanaf &euro;89,- /nacht</span>
             </div>
-        <?php endforeach; ?>
+            <div class="kamer-info">
+                <h3>Comfort Kamer</h3>
+                <p>Onze Comfort Kamer biedt een serene ontsnapping met alle basisvoorzieningen die u nodig heeft. 
+                    Geniet van een comfortabel bed, een moderne badkamer en een prachtig uitzicht op de stad. Perfect voor een kort verblijf of een zakenreis.</p>
+                <div class="kamer-kenmerken">
+                    <span class="kamer-kenmerk">2 Personen</span>
+                    <span class="kamer-kenmerk">25 m&sup2;</span>
+                    <span class="kamer-kenmerk">Wifi</span>
+                    <span class="kamer-kenmerk">Airco</span>
+                    <span class="kamer-kenmerk">TV</span>
+                </div>
+                <a href="reserverings_syteem.php" class="btn-kamer">Reserveer Nu</a>
+            </div>
+        </div>
+
+        <div class="kamer-kaart">
+            <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80')">
+                <span class="kamer-prijs">Vanaf &euro;139,- /nacht</span>
+            </div>
+            <div class="kamer-info">
+                <h3>Deluxe Kamer</h3>
+                <p>Voor degenen die net dat beetje extra comfort willen, is onze Deluxe Kamer de perfecte keuze. 
+                    Deze kamers zijn ruimer en beschikken over luxere voorzieningen, zoals een zithoek en een Nespresso-apparaat. 
+                    De ideale plek om te ontspannen na een dag vol ontdekkingen in Alkmaar.</p>
+                <div class="kamer-kenmerken">
+                    <span class="kamer-kenmerk">2 Personen</span>
+                    <span class="kamer-kenmerk">35 m&sup2;</span>
+                    <span class="kamer-kenmerk">Zithoek</span>
+                    <span class="kamer-kenmerk">Nespresso-apparaat</span>
+                    <span class="kamer-kenmerk">Badjas</span>
+                </div>
+                <a href="reserverings_syteem.php" class="btn-kamer">Reserveer Nu</a>
+            </div>
+        </div>
+
+        <div class="kamer-kaart">
+            <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80')">
+                <span class="kamer-prijs">Vanaf &euro;199,- /nacht</span>
+            </div>
+            <div class="kamer-info">
+                <h3>Junior Suite</h3>
+                <p>Onze Junior Suites bieden een ultieme combinatie van ruimte en luxe. 
+                    Met een aparte woonkamer, een ruime badkamer en een balkon met een adembenemend uitzicht, is deze kamer perfect voor een romantisch uitje of een speciale gelegenheid.</p>
+                <div class="kamer-kenmerken">
+                    <span class="kamer-kenmerk">2 Personen</span>
+                    <span class="kamer-kenmerk">60 m&sup2;</span>
+                    <span class="kamer-kenmerk">Apparte woonkamer</span>
+                    <span class="kamer-kenmerk">Balkon met mooi uitzicht</span>
+                </div>
+                <a href="reserverings_syteem.php" class="btn-kamer">Reserveer Nu</a>
+            </div>
+        </div>
+
+        <div class="kamer-kaart">
+            <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80')">
+                <span class="kamer-prijs">Vanaf &euro;179,- /nacht</span>
+            </div>
+            <div class="kamer-info">
+                <h3>Familie Suite</h3>
+                <p>Speciaal ontworpen voor gezinnen, biedt onze Familie Suite voldoende ruimte en comfort voor iedereen. 
+                    Deze suites beschikken over twee aparte slaapkamers, een ruime woonkamer en extra voorzieningen zoals een kitchenette en speelhoek voor de kinderen. 
+                    De perfecte thuisbasis voor een onvergetelijke familievakantie.</p>
+                <div class="kamer-kenmerken">
+                    <span class="kamer-kenmerk">4 Personen</span>
+                    <span class="kamer-kenmerk">2x25 m&sup2;</span>
+                    <span class="kamer-kenmerk">2 Slaapkamers</span>
+                    <span class="kamer-kenmerk">Woonkamer</span>
+                    <span class="kamer-kenmerk">Kitchenette</span>
+                    <span class="kamer-kenmerk">Speelhoek</span>
+                </div>
+                <a href="reserverings_syteem.php" class="btn-kamer">Reserveer Nu</a>
+            </div>
+        </div>
+
+        <div class="kamer-kaart">
+            <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80')">
+                <span class="kamer-prijs">Vanaf &euro;169,- /nacht</span>
+            </div>
+            <div class="kamer-info">
+                <h3>Bruidssuite</h3>
+                <p>Onze Bruidssuite is de ultieme romantische ontsnapping voor pasgetrouwde stellen. 
+                    Deze luxueuze suite biedt een ruime slaapkamer met een kingsize bed, een stijlvolle woonkamer en een eigen balkon met een prachtig uitzicht op Alkmaar. 
+                    Geniet van extra's zoals een bubbelbad, rozenblaadjes op het bed en een fles champagne om uw speciale gelegenheid te vieren in stijl.</p>
+                <div class="kamer-kenmerken">
+                    <span class="kamer-kenmerk">2 Personen</span>
+                    <span class="kamer-kenmerk">45 m&sup2;</span>
+                    <span class="kamer-kenmerk">Kingsize Bed</span>
+                    <span class="kamer-kenmerk">Balkon</span>
+                    <span class="kamer-kenmerk">bubbelbad</span>
+                    <span class="kamer-kenmerk">Rozenblaadjes</span>
+                    <span class="kamer-kenmerk">Champagne</span>
+                </div>
+                <a href="reserverings_syteem.php" class="btn-kamer">Reserveer Nu</a>
+            </div>
+        </div>
     </div>
 </section>
 
