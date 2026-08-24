@@ -91,11 +91,11 @@ if (isset($_POST['verstuur'])) {
                 </div>
             <?php endif; ?>
 
-            <form method="POST" action="contact.php">
+            <form method="POST" action="contact.php" id="ContactForm">
                 <div class="formulier-rij">
                     <div class="formulier-veld">
                         <label for="naam">Naam</label>
-                        <input type="text" id="naam" name="naam" placeholder="Uw volledige naam" required>
+                        <input type="text" id="naam" name="naam" placeholder="Uw volledige naam" pattern="[A-Za-z\s]+" title="Voer alleen letters en spaties in" required>
                     </div>
                     <div class="formulier-veld">
                         <label for="email">E-mail</label>
@@ -105,7 +105,7 @@ if (isset($_POST['verstuur'])) {
                 <div class="formulier-rij">
                     <div class="formulier-veld">
                         <label for="telefoon">Telefoon</label>
-                        <input type="tel" id="telefoon" name="telefoon" placeholder="+31 6 12345678">
+                        <input type="tel" id="telefoon" name="telefoon" placeholder="+31 6 12345678" pattern="^\+?[0-9\s\-()]{7,20}$" title="Voer een geldig telefoonnummer in" required>
                     </div>
                     <div class="formulier-veld">
                         <label for="onderwerp">Onderwerp</label>
@@ -130,4 +130,20 @@ if (isset($_POST['verstuur'])) {
     </div>
 </section>
 
+<script>
+document.getElementById('ContactForm').addEventListener('submit', function(e) {
+    const input = document.getElementById('telefoon');
+    const errorDiv = document.getElementById('error');
+    
+    if (!/^[0-9\s\-\(\)]+$/.test(input.value)) {
+        e.preventDefault();
+        errorDiv.textContent = "Please enter a valid phone number.";
+    } else {
+        errorDiv.textContent = "";
+    }
+});
+</script>
+
 <?php include 'includes/footer.php'; ?>
+
+</html>
