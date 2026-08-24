@@ -4,6 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $ingelogd = isset($_SESSION['gebruiker_id']);
+$is_admin = !empty($_SESSION['is_admin']);
 ?>
 
 <nav class="navbar" id="navbar">
@@ -18,6 +19,9 @@ $ingelogd = isset($_SESSION['gebruiker_id']);
             <li><a href="restaurant.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'restaurant.php' ? 'active' : ''; ?>">Restaurant</a></li>
             <li><a href="ons.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'ons.php' ? 'active' : ''; ?>">Over Ons</a></li>
             <li><a href="contact.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'contact.php' ? 'active' : ''; ?>">Contact</a></li>
+            <?php if ($is_admin): ?>
+                <li><a href="admin_kamers.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'admin_kamers.php' ? 'active' : ''; ?>">Kamers beheren</a></li>
+            <?php endif; ?>
             <li>
                 <?php if ($ingelogd): ?>
                     <a href="uitloggen.php" class="btn-reserveer">Uitloggen</a>

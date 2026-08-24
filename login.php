@@ -18,8 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $gebruiker = $stmt->fetch(PDO::FETCH_ASSOC);
 
             if ($gebruiker && password_verify($wachtwoord, $gebruiker['wachtwoord'])) {
+                session_regenerate_id(true);
                 $_SESSION['gebruiker_id'] = $gebruiker['id'];
                 $_SESSION['gebruikersnaam'] = $gebruiker['gebruikersnaam'];
+                $_SESSION['is_admin'] = (bool) $gebruiker['is_admin'];
                 header('Location: index.php');
                 exit;
             } else {
