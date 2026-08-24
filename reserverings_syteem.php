@@ -35,13 +35,13 @@ if (isset($_POST['verstuur'])) {
             $bericht_type = 'fout';
         } else {
             try {
-                $stmt_kamer = $pdo->prepare("SELECT k.id, k.kamer_nummer, k.kamer_type, k.prijs_per_nacht
+                $stmt_kamer = $pdo->prepare("SELECT k.kamer_nummer AS kamer_id, k.kamer_nummer, k.kamer_type, k.prijs_per_nacht
                     FROM Kamer k
                     WHERE k.kamer_type = :kamer_type
                         AND k.beschikbaar = 1
                         AND NOT EXISTS (
                             SELECT 1 FROM Reserveringen r
-                            WHERE r.kamer_id = k.id
+                            WHERE r.kamer_id = k.kamer_nummer
                                 AND NOT (r.eind_datum <= :start OR r.start_datum >= :eind)
                         )
                     ORDER BY k.kamer_nummer
@@ -69,7 +69,7 @@ if (isset($_POST['verstuur'])) {
                         $stmt->execute([
                             ':email' => $gebruiker['email'],
                             ':gebruiker' => $_SESSION['gebruiker_id'],
-                            ':kamer_id' => $kamer['id'],
+                            ':kamer_id' => $kamer['kamer_id'],
                             ':kamer_type' => $kamer['kamer_type'],
                             ':start' => $start_datum,
                             ':eind' => $eind_datum,
@@ -81,7 +81,7 @@ if (isset($_POST['verstuur'])) {
                             "Kamer_type: {$kamer['kamer_type']}\n" .
                             "Aankomst: {$start_datum}\n" .
                             "Vertrek: {$eind_datum}\n" .
-                            "Kamer_nummer/ID: {$kamer['kamer_nummer']} / {$kamer['id']}\n" .
+                            "Kamer_nummer: {$kamer['kamer_nummer']}\n" .
                             "Prijs per nacht: €" . number_format($kamer['prijs_per_nacht'], 2, ',', '.') . "\n\n" .
                             "Met vriendelijke groet,\nHotel Zonne Vallei";
                         $afzender = getenv('MAIL_FROM') ?: 'reserveringen@zonnevallei.nl';
