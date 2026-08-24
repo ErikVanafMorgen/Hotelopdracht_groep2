@@ -52,49 +52,62 @@
         </div>
         <div class="kamers-grid">
             <div class="kamer-kaart">
-                <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&q=80')">
-                    <span class="kamer-prijs">Vanaf &euro;89,-</span>
-                </div>
-                <div class="kamer-info">
-                    <h3>Standaard Kamer</h3>
-                    <p>Een comfortabele kamer met alle basisvoorzieningen voor een aangenaam verblijf.</p>
-                    <div class="kamer-kenmerken">
-                        <span class="kamer-kenmerk">2 Personen</span>
-                        <span class="kamer-kenmerk">Wifi</span>
-                        <span class="kamer-kenmerk">TV</span>
-                    </div>
-                    <a href="kamers.php" class="btn-kamer">Meer Informatie</a>
-                </div>
+            <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&q=80')">
+                <span class="kamer-prijs">Vanaf &euro;89,- /nacht</span>
             </div>
-            <div class="kamer-kaart">
-                <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80')">
-                    <span class="kamer-prijs">Vanaf &euro;139,-</span>
+            <div class="kamer-info">
+                <h3>Comfort Kamer</h3>
+                <p>Onze Comfort Kamer biedt een serene ontsnapping met alle basisvoorzieningen die u nodig heeft. 
+                    Geniet van een comfortabel bed, een moderne badkamer en een prachtig uitzicht op de stad. Perfect voor een kort verblijf of een zakenreis.</p>
+                <div class="kamer-kenmerken">
+                    <span class="kamer-kenmerk">2 Personen</span>
+                    <span class="kamer-kenmerk">25 m&sup2;</span>
+                    <span class="kamer-kenmerk">Wifi</span>
+                    <span class="kamer-kenmerk">Airco</span>
+                    <span class="kamer-kenmerk">TV</span>
                 </div>
-                <div class="kamer-info">
-                    <h3>Luxe Kamer</h3>
-                    <p>Geniet van extra ruimte, premium voorzieningen en een ademend uitzicht.</p>
-                    <div class="kamer-kenmerken">
-                        <span class="kamer-kenmerk">2 Personen</span>
-                        <span class="kamer-kenmerk">Balkon</span>
-                        <span class="kamer-kenmerk">Minibar</span>
-                    </div>
-                    <a href="kamers.php" class="btn-kamer">Meer Informatie</a>
-                </div>
+                <a href="reserverings_syteem.php" class="btn-kamer">Reserveer Nu</a>
             </div>
+        </div>
+
+        <div class="kamer-kaart">
+            <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80')">
+                <span class="kamer-prijs">Vanaf &euro;139,- /nacht</span>
+            </div>
+            <div class="kamer-info">
+                <h3>Deluxe Kamer</h3>
+                <p>Voor degenen die net dat beetje extra comfort willen, is onze Deluxe Kamer de perfecte keuze. 
+                    Deze kamers zijn ruimer en beschikken over luxere voorzieningen, zoals een zithoek en een Nespresso-apparaat. 
+                    De ideale plek om te ontspannen na een dag vol ontdekkingen in Alkmaar.</p>
+                <div class="kamer-kenmerken">
+                    <span class="kamer-kenmerk">2 Personen</span>
+                    <span class="kamer-kenmerk">35 m&sup2;</span>
+                    <span class="kamer-kenmerk">Zithoek</span>
+                    <span class="kamer-kenmerk">Nespresso-apparaat</span>
+                    <span class="kamer-kenmerk">Badjas</span>
+                </div>
+                <a href="reserverings_syteem.php" class="btn-kamer">Reserveer Nu</a>
+            </div>
+        </div>
+
             <div class="kamer-kaart">
-                <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80')">
-                    <span class="kamer-prijs">Vanaf &euro;199,-</span>
+            <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80')">
+                <span class="kamer-prijs">Vanaf &euro;179,- /nacht</span>
+            </div>
+            <div class="kamer-info">
+                <h3>Familie Suite</h3>
+                <p>Speciaal ontworpen voor gezinnen, biedt onze Familie Suite voldoende ruimte en comfort voor iedereen. 
+                    Deze suites beschikken over twee aparte slaapkamers, een ruime woonkamer en extra voorzieningen zoals een kitchenette en speelhoek voor de kinderen. 
+                    De perfecte thuisbasis voor een onvergetelijke familievakantie.</p>
+                <div class="kamer-kenmerken">
+                    <span class="kamer-kenmerk">4 Personen</span>
+                    <span class="kamer-kenmerk">2x25 m&sup2;</span>
+                    <span class="kamer-kenmerk">2 Slaapkamers</span>
+                    <span class="kamer-kenmerk">Woonkamer</span>
+                    <span class="kamer-kenmerk">Kitchenette</span>
+                    <span class="kamer-kenmerk">Speelhoek</span>
                 </div>
-                <div class="kamer-info">
-                    <h3>President Suite</h3>
-                    <p>De ultieme luxe ervaring met een ruime suite, jacuzzi en panoramisch uitzicht.</p>
-                    <div class="kamer-kenmerken">
-                        <span class="kamer-kenmerk">4 Personen</span>
-                        <span class="kamer-kenmerk">Jacuzzi</span>
-                        <span class="kamer-kenmerk">Uitzicht</span>
-                    </div>
-                    <a href="kamers.php" class="btn-kamer">Meer Informatie</a>
-                </div>
+                <a href="reserverings_syteem.php" class="btn-kamer">Reserveer Nu</a>
             </div>
         </div>
     </div>
