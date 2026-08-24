@@ -41,7 +41,7 @@ if (isset($_POST['verstuur'])) {
                         AND k.beschikbaar = 1
                         AND NOT EXISTS (
                             SELECT 1 FROM Reserveringen r
-                            WHERE r.kamer_id = k.kamer_nummer
+                            WHERE r.kamer_nummer = k.kamer_nummer
                                 AND NOT (r.eind_datum <= :start OR r.start_datum >= :eind)
                         )
                     ORDER BY k.kamer_nummer
@@ -65,11 +65,11 @@ if (isset($_POST['verstuur'])) {
                         $bericht = "Uw account heeft geen geldig e-mailadres. Pas uw accountgegevens aan en probeer opnieuw.";
                         $bericht_type = 'fout';
                     } else {
-                        $stmt = $pdo->prepare("INSERT INTO Reserveringen (email, Gebruikers_id, kamer_id, kamer_type, start_datum, eind_datum, creditcardnummer) VALUES (:email, :gebruiker, :kamer_id, :kamer_type, :start, :eind, :creditcard)");
+                        $stmt = $pdo->prepare("INSERT INTO Reserveringen (email, Gebruikers_id, kamer_nummer, kamer_type, start_datum, eind_datum, creditcardnummer) VALUES (:email, :gebruiker, :kamer_nummer, :kamer_type, :start, :eind, :creditcard)");
                         $stmt->execute([
                             ':email' => $gebruiker['email'],
                             ':gebruiker' => $_SESSION['gebruiker_id'],
-                            ':kamer_id' => $kamer['kamer_id'],
+                            ':kamer_nummer' => $kamer['kamer_nummer'],
                             ':kamer_type' => $kamer['kamer_type'],
                             ':start' => $start_datum,
                             ':eind' => $eind_datum,
@@ -84,7 +84,7 @@ if (isset($_POST['verstuur'])) {
                             "Kamer_nummer: {$kamer['kamer_nummer']}\n" .
                             "Prijs per nacht: €" . number_format($kamer['prijs_per_nacht'], 2, ',', '.') . "\n\n" .
                             "Met vriendelijke groet,\nHotel Zonne Vallei";
-                        $afzender = getenv('MAIL_FROM') ?: 'reserveringen@zonnevallei.nl';
+                        $afzender = $gebruiker['email'];
                         $headers = "From: {$afzender}\r\nReply-To: {$afzender}\r\nContent-Type: text/plain; charset=UTF-8\r\n";
                         $mail_verstuurd = mail($gebruiker['email'], $onderwerp, $mailbericht, $headers);
 
@@ -95,7 +95,7 @@ if (isset($_POST['verstuur'])) {
                     }
                 }
             } catch (PDOException $e) {
-                $bericht = "Er is iets misgegaan. Probeer het opnieuw.";
+                $bericht = $e->getMessage();
                 $bericht_type = 'fout';
             }
         }
