@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST" action="login.php">
             <div class="formulier-veld">
                 <label for="gebruikersnaam">Gebruikersnaam</label>
-                <input type="text" id="gebruikersnaam" name="gebruikersnaam" placeholder="Voer uw gebruikersnaam in" required>
+                <input type="text" id="gebruikersnaam" name="gebruikersnaam" placeholder="Voer uw gebruikersnaam in" pattern="[A-Za-z\s]+" title="Voer alleen letters en spaties in" required>
             </div>
             <div class="formulier-veld">
                 <label for="email">E-mail</label>
