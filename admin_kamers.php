@@ -99,7 +99,7 @@ foreach ($kamers as $kamer) {
             <?php if ($te_bewerken): ?><input type="hidden" name="oud_kamer_nummer" value="<?php echo (int) $te_bewerken['kamer_nummer']; ?>"><?php endif; ?>
             <div class="formulier-rij">
                 <div class="formulier-veld"><label for="kamer_nummer">Kamernummer</label><input type="number" id="kamer_nummer" name="kamer_nummer" min="1" required <?php echo $te_bewerken ? 'readonly' : ''; ?> value="<?php echo htmlspecialchars($te_bewerken['kamer_nummer'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"></div>
-                <div class="formulier-veld"><label for="kamer_type">Kamertype</label><input type="text" id="kamer_type" name="kamer_type" required value="<?php echo htmlspecialchars($te_bewerken['kamer_type'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"></div>
+                <div class="formulier-veld"><label for="kamer_type">Kamertype</label><input type="text" id="kamer_type" name="kamer_type" pattern="[A-Za-z\s]+" title="Voer alleen letters en spaties in" required value="<?php echo htmlspecialchars($te_bewerken['kamer_type'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"></div>
                 <div class="formulier-veld"><label for="prijs_per_nacht">Prijs per nacht</label><input type="number" id="prijs_per_nacht" name="prijs_per_nacht" min="0" step="0.01" required value="<?php echo htmlspecialchars($te_bewerken['prijs_per_nacht'] ?? '', ENT_QUOTES, 'UTF-8'); ?>"></div>
             </div>
             <label><input type="checkbox" name="beschikbaar" value="1" <?php echo (!$te_bewerken || $te_bewerken['beschikbaar']) ? 'checked' : ''; ?>> Beschikbaar</label>
