@@ -95,7 +95,9 @@ if (isset($_POST['verstuur'])) {
                     }
                 }
             } catch (PDOException $e) {
-                $bericht = $e->getMessage();
+                $bericht = "Sorry, er iets fout gegaan. Probeer het later nog een keer. 
+                Als de fout zich blijft herhalen neem dan contact met ons op via het contact formulier op de contactpagina onder de categorie Technisch probleem. 
+                Sorry voor het ongemak.";
                 $bericht_type = 'fout';
             }
         }
