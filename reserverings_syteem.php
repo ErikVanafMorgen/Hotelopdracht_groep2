@@ -1,6 +1,11 @@
 <?php
 session_start();
 
+require_once __DIR__ . '/vendor/autoload.php';
+
+use PHPMailer\PHPMailer\Exception as MailException;
+use PHPMailer\PHPMailer\PHPMailer;
+
 if (!isset($_SESSION['gebruiker_id'])) {
     header('Location: login.php');
     exit;
@@ -65,6 +70,7 @@ if (isset($_POST['verstuur'])) {
                         $bericht = "Uw account heeft geen geldig e-mailadres. Pas uw accountgegevens aan en probeer opnieuw.";
                         $bericht_type = 'fout';
                     } else {
+                        $pdo->beginTransaction();
                         $stmt = $pdo->prepare("INSERT INTO Reserveringen (email, Gebruikers_id, kamer_nummer, kamer_type, start_datum, eind_datum, creditcardnummer) VALUES (:email, :gebruiker, :kamer_nummer, :kamer_type, :start, :eind, :creditcard)");
                         $stmt->execute([
                             ':email' => $gebruiker['email'],
@@ -75,6 +81,12 @@ if (isset($_POST['verstuur'])) {
                             ':eind' => $eind_datum,
                             ':creditcard' => '**** **** **** ' . substr($creditcardnummer, -4)
                         ]);
+                        $stmt_beschikbaarheid = $pdo->prepare("UPDATE Kamer SET beschikbaar = 0 WHERE kamer_nummer = :kamer_nummer AND beschikbaar = 1");
+                        $stmt_beschikbaarheid->execute([':kamer_nummer' => $kamer['kamer_nummer']]);
+                        if ($stmt_beschikbaarheid->rowCount() !== 1) {
+                            throw new PDOException('De kamer is ondertussen door een andere reservering toegewezen.');
+                        }
+                        $pdo->commit();
 
                         $onderwerp = 'Verificatie van uw reservering - Hotel Zonne Vallei';
                         $mailbericht = "Beste gast,\n\nUw reservering is ontvangen.\n\n" .
@@ -84,9 +96,33 @@ if (isset($_POST['verstuur'])) {
                             "Kamer_nummer: {$kamer['kamer_nummer']}\n" .
                             "Prijs per nacht: €" . number_format($kamer['prijs_per_nacht'], 2, ',', '.') . "\n\n" .
                             "Met vriendelijke groet,\nHotel Zonne Vallei";
-                        $afzender = $gebruiker['email'];
-                        $headers = "From: {$afzender}\r\nReply-To: {$afzender}\r\nContent-Type: text/plain; charset=UTF-8\r\n";
-                        $mail_verstuurd = mail($gebruiker['email'], $onderwerp, $mailbericht, $headers);
+                        $mail_verstuurd = false;
+                        try {
+                            $smtp_username = getenv('SMTP_USERNAME') ?: 'reseveringenzonnevallei@gmail.com';
+                            $smtp_password = getenv('SMTP_PASSWORD') ?: 'dxbk uczo wehb egbp';
+                            $afzender = getenv('MAIL_FROM') ?: $smtp_username;
+                            if (!$smtp_username || !$smtp_password || !filter_var($afzender, FILTER_VALIDATE_EMAIL)) {
+                                throw new MailException('Gmail SMTP-configuratie ontbreekt.');
+                            }
+
+                            $mail = new PHPMailer(true);
+                            $mail->isSMTP();
+                            $mail->Host = 'smtp.gmail.com';
+                            $mail->SMTPAuth = true;
+                            $mail->Username = $smtp_username;
+                            $mail->Password = $smtp_password;
+                            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                            $mail->Port = 587;
+                            $mail->setFrom($afzender, 'Hotel Zonne Vallei');
+                            $mail->addAddress($gebruiker['email']);
+                            $mail->Subject = $onderwerp;
+                            $mail->Body = $mailbericht;
+                            $mail->AltBody = $mailbericht;
+                            $mail->send();
+                            $mail_verstuurd = true;
+                        } catch (MailException $e) {
+                            $mail_verstuurd = false;
+                        }
 
                         $bericht = $mail_verstuurd
                             ? "Uw reservering is succesvol geplaatst. De verificatie is naar uw e-mailadres verzonden."
@@ -95,6 +131,9 @@ if (isset($_POST['verstuur'])) {
                     }
                 }
             } catch (PDOException $e) {
+                if ($pdo->inTransaction()) {
+                    $pdo->rollBack();
+                }
                 $bericht = "Sorry, er iets fout gegaan. Probeer het later nog een keer. 
                 Als de fout zich blijft herhalen neem dan contact met ons op via het contact formulier op de contactpagina onder de categorie Technisch probleem. 
                 Sorry voor het ongemak.";
