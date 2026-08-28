@@ -111,10 +111,10 @@ if (isset($_POST['verstuur'])) {
                         <select id="onderwerp" name="onderwerp" required>
                             <option value="" disabled selected>Kies een onderwerp</option>
                             <option value="Algemene vraag">Algemene vraag</option>
+                            <option value="Annuleren">Annuleren</option>
+                            <option value="Klacht">Klacht</option>
                             <option value="Reservering">Reservering</option>
                             <option value="Restaurant">Restaurant</option>
-                            <option value="Klacht">Klacht</option>
-                            <option value="Annuleren">Annuleren</option>
                             <option value="Technisch probleem">Technisch probleem</option>
                         </select>
                     </div>
