@@ -34,7 +34,6 @@ if (isset($_POST['verstuur'])) {
     <div>
         <h1>Contact</h1>
         <p>Heeft u vragen of wilt u meer informatie? Wij helpen u graag verder.</p>
-        <div class="breadcrumb"><a href="index.php">Home</a> / Contact</div>
     </div>
 </section>
 
@@ -112,9 +111,10 @@ if (isset($_POST['verstuur'])) {
                         <select id="onderwerp" name="onderwerp" required>
                             <option value="" disabled selected>Kies een onderwerp</option>
                             <option value="Algemene vraag">Algemene vraag</option>
+                            <option value="Annuleren">Annuleren</option>
+                            <option value="Klacht">Klacht</option>
                             <option value="Reservering">Reservering</option>
                             <option value="Restaurant">Restaurant</option>
-                            <option value="Klacht">Klacht</option>
                             <option value="Technisch probleem">Technisch probleem</option>
                         </select>
                     </div>

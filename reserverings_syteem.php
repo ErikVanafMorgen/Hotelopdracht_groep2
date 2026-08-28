@@ -89,17 +89,33 @@ if (isset($_POST['verstuur'])) {
                         $pdo->commit();
 
                         $onderwerp = 'Verificatie van uw reservering - Hotel Zonne Vallei';
+                        $kamer_type_mail = htmlspecialchars($kamer['kamer_type'], ENT_QUOTES, 'UTF-8');
+                        $aankomst_mail = htmlspecialchars($start_datum, ENT_QUOTES, 'UTF-8');
+                        $vertrek_mail = htmlspecialchars($eind_datum, ENT_QUOTES, 'UTF-8');
+                        $kamer_nummer_mail = htmlspecialchars($kamer['kamer_nummer'], ENT_QUOTES, 'UTF-8');
+                        $prijs_mail = number_format($kamer['prijs_per_nacht'], 2, ',', '.');
                         $mailbericht = "Beste gast,\n\nUw reservering is ontvangen.\n\n" .
                             "Kamer_type: {$kamer['kamer_type']}\n" .
                             "Aankomst: {$start_datum}\n" .
                             "Vertrek: {$eind_datum}\n" .
                             "Kamer_nummer: {$kamer['kamer_nummer']}\n" .
-                            "Prijs per nacht: €" . number_format($kamer['prijs_per_nacht'], 2, ',', '.') . "\n\n" .
+                            "Prijs per nacht: EUR {$prijs_mail}\n\n" .
                             "Met vriendelijke groet,\nHotel Zonne Vallei";
+                        $mail_html = '<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"></head><body style="margin:0;background:#f5f1ea;font-family:Arial,sans-serif;color:#2f2a25;">' .
+                            '<div style="max-width:600px;margin:32px auto;background:#ffffff;padding:32px;border:1px solid #e3d7c8;">' .
+                            '<h1 style="margin:0 0 12px;color:#9a783f;font-size:24px;">Bevestiging van uw reservering</h1>' .
+                            '<p style="margin:0 0 24px;line-height:1.6;">Beste gast,<br>Uw reservering bij Hotel Zonne Vallei is ontvangen.</p>' .
+                            '<table role="presentation" style="width:100%;border-collapse:collapse;margin-bottom:24px;">' .
+                            '<tr><td style="padding:12px 0;border-bottom:1px solid #eee;font-weight:bold;">Kamer_type</td><td style="padding:12px 0;border-bottom:1px solid #eee;">' . $kamer_type_mail . '</td></tr>' .
+                            '<tr><td style="padding:12px 0;border-bottom:1px solid #eee;font-weight:bold;">Aankomst</td><td style="padding:12px 0;border-bottom:1px solid #eee;">' . $aankomst_mail . '</td></tr>' .
+                            '<tr><td style="padding:12px 0;border-bottom:1px solid #eee;font-weight:bold;">Vertrek</td><td style="padding:12px 0;border-bottom:1px solid #eee;">' . $vertrek_mail . '</td></tr>' .
+                            '<tr><td style="padding:12px 0;border-bottom:1px solid #eee;font-weight:bold;">Kamer_nummer</td><td style="padding:12px 0;border-bottom:1px solid #eee;">' . $kamer_nummer_mail . '</td></tr>' .
+                            '<tr><td style="padding:12px 0;font-weight:bold;">Prijs per nacht</td><td style="padding:12px 0;">&euro; ' . $prijs_mail . '</td></tr>' .
+                            '</table><p style="margin:0;line-height:1.6;">Met vriendelijke groet,<br>Hotel Zonne Vallei</p></div></body></html>';
                         $mail_verstuurd = false;
                         try {
-                            $smtp_username = getenv('SMTP_USERNAME') ?: 'reseveringenzonnevallei@gmail.com';
-                            $smtp_password = getenv('SMTP_PASSWORD') ?: 'dxbk uczo wehb egbp';
+                            $smtp_username = getenv('SMTP_USERNAME') ?: '';
+                            $smtp_password = getenv('SMTP_PASSWORD') ?: '';
                             $afzender = getenv('MAIL_FROM') ?: $smtp_username;
                             if (!$smtp_username || !$smtp_password || !filter_var($afzender, FILTER_VALIDATE_EMAIL)) {
                                 throw new MailException('Gmail SMTP-configuratie ontbreekt.');
@@ -113,10 +129,13 @@ if (isset($_POST['verstuur'])) {
                             $mail->Password = $smtp_password;
                             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                             $mail->Port = 587;
+                            $mail->CharSet = 'UTF-8';
+                            $mail->Encoding = 'base64';
                             $mail->setFrom($afzender, 'Hotel Zonne Vallei');
                             $mail->addAddress($gebruiker['email']);
+                            $mail->isHTML(true);
                             $mail->Subject = $onderwerp;
-                            $mail->Body = $mailbericht;
+                            $mail->Body = $mail_html;
                             $mail->AltBody = $mailbericht;
                             $mail->send();
                             $mail_verstuurd = true;
@@ -153,7 +172,6 @@ if (isset($_POST['verstuur'])) {
     <div>
         <h1>Reserveren</h1>
         <p>Reserveer eenvoudig uw ideale kamer bij Hotel Zonne Vallei</p>
-        <div class="breadcrumb"><a href="index.php">Home</a> / Reserveren</div>
     </div>
 </section>
 
