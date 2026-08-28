@@ -84,6 +84,7 @@ if (isset($_POST['verstuur'])) {
         <div class="contact-formulier">
             <h3>Stuur Ons Een Bericht</h3>
 
+            <!-- Bericht wordt alleen getoond als er een melding is (bijv. foutmelding of bevestiging na het versturen). -->
             <?php if ($bericht): ?>
                 <div class="bericht <?php echo $bericht_type === 'succes' ? 'bericht-succes' : 'bericht-fout'; ?>">
                     <?php echo $bericht; ?>

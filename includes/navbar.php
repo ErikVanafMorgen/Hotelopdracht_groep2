@@ -14,6 +14,7 @@ $huidige_pagina = basename($_SERVER['PHP_SELF']);
             <img src="images/logo_zwart.png" alt="Zonne Vallei">
         </a>
         <ul class="nav-links" id="navLinks">
+            <!-- De klasse 'active' zet de huidige pagina in het goud. 'active' wordt alleen ingevoegd als $huidige_pagina overeenkomt. -->
             <li><a href="index.php" class="<?php echo $huidige_pagina == 'index.php' ? 'active' : ''; ?>">Home</a></li>
             <li><a href="kamers.php" class="<?php echo $huidige_pagina == 'kamers.php' ? 'active' : ''; ?>">Kamers</a></li>
             <li><a href="restaurant.php" class="<?php echo $huidige_pagina == 'restaurant.php' ? 'active' : ''; ?>">Restaurant</a></li>

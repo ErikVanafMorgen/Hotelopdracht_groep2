@@ -187,6 +187,7 @@ if (isset($_POST['verstuur'])) {
         <div class="reservering-formulier">
             <h3>Uw Gegevens</h3>
 
+            <!-- Bericht wordt alleen getoond als er een melding is (bijv. foutmelding of bevestiging na het versturen). -->
             <?php if ($bericht): ?>
                 <div class="bericht <?php echo $bericht_type === 'succes' ? 'bericht-succes' : 'bericht-fout'; ?>">
                     <?php echo $bericht; ?>
@@ -199,6 +200,7 @@ if (isset($_POST['verstuur'])) {
                         <label for="kamer_type">Kamer_type</label>
                         <select id="kamer_type" name="kamer_type" required>
                             <option value="" disabled selected>Selecteer een kamertype</option>
+                            <!-- htmlspecialchars() voorkomt dat invoer met tekens als < > de code kan breken (beveiliging). -->
                             <?php foreach ($kamer_types as $type): ?>
                                 <option value="<?php echo htmlspecialchars($type, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($type, ENT_QUOTES, 'UTF-8'); ?></option>
                             <?php endforeach; ?>
@@ -206,6 +208,7 @@ if (isset($_POST['verstuur'])) {
                     </div>
                 </div>
                 <div class="formulier-rij">
+                    <!-- min/max beperken de datumkeuze: niet in het verleden en maximaal 1 jaar vooruit. -->
                     <div class="formulier-veld">
                         <label for="start_datum">Aankomst</label>
                         <input type="date" id="start_datum" name="start_datum" min="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d', strtotime('+1 year')); ?>" required>

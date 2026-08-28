@@ -1,5 +1,7 @@
+/* Google Fonts: Playfair Display (titeltekst) en Lato (gewone tekst) zijn externe lettertypes die via een link worden ingeladen. */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&display=swap');
 
+/* CSS-variabelen (--naam): één kleur aanpassen hier verandert de kleur op de hele website. */
 :root {
     --wit: #FFFFFF;
     --goud: #B5925C;
@@ -44,6 +46,7 @@ img {
     display: block;
 }
 
+/* Vaste (fixed) navbar: blijft bovenaan staan terwijl je scrolt. z-index zorgt dat hij boven andere elementen staat. */
 .navbar {
     position: fixed;
     top: 0;
@@ -99,6 +102,7 @@ img {
     transition: color 0.3s ease;
 }
 
+/* ::after voegt een extra (onzichtbaar) element toe na elke link: de gouden streep die bij hover verschijnt. */
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -164,6 +168,7 @@ img {
     transition: all 0.3s ease;
 }
 
+/* De hero springt over de volledige schermhoogte (100vh = viewport height). De gradient maakt de foto donkerder voor leesbare tekst. */
 .hero {
     height: 100vh;
     min-height: 600px;
@@ -201,15 +206,6 @@ img {
     margin: 0 auto 20px;
 }
 
-.hero-subtitle {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 5px;
-    margin-bottom: 20px;
-    color: var(--licht-geel);
-    font-weight: 400;
-}
-
 .hero h1 {
     font-family: 'Playfair Display', serif;
     font-size: 3rem;
@@ -217,6 +213,7 @@ img {
     line-height: 1.2;
 }
 
+/* auto-marges links en rechts centreren het blok (bijv. de hero-tekst). */
 .hero p {
     font-size: 1.15rem;
     margin-bottom: 40px;
@@ -281,12 +278,30 @@ img {
     margin: 0 auto;
 }
 
+.sectie-wit {
+    background: var(--wit);
+    padding: 100px 40px;
+    max-width: none;
+}
+
+.sectie-wit-klein {
+    background: var(--wit);
+    padding: 80px 40px;
+    max-width: none;
+}
+
+.container-1200 {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .sectie-kop {
     text-align: center;
     margin-bottom: 60px;
 }
 
-.sectie-kop .ondertitel {
+.sectie-kop .ondertitel,
+.verhaal-ondertitel {
     font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 4px;
@@ -315,6 +330,7 @@ img {
     margin: 20px auto;
 }
 
+/* Grid verdeelt inhoud in kolommen. repeat(3, 1fr) = 3 gelijke kolommen die alle ruimte gebruiken (1fr = 1 deel). */
 .voordelen-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -375,6 +391,13 @@ img {
     position: relative;
 }
 
+.kamer-foto-1 { background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&q=80'); }
+.kamer-foto-2 { background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80'); }
+.kamer-foto-3 { background-image: url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80'); }
+.kamer-foto-4 { background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80'); }
+.kamer-foto-5 { background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80'); }
+
+/* position: absolute plaatst het prijskaartje met absolute coördinaten t.o.v. de dichtstbijzijnde relative ouder (.kamer-afbeelding). */
 .kamer-prijs {
     position: absolute;
     bottom: 15px;
@@ -448,12 +471,40 @@ img {
     align-items: start;
 }
 
-.menu-sectie h3 {
+.restaurant-intro h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--goud);
+    margin-bottom: 20px;
+}
+
+.restaurant-intro p {
+    color: var(--tekst);
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.restaurant-intro p:last-of-type {
+    color: var(--tekst-licht);
+    margin-bottom: 25px;
+}
+
+.menu-sectie h3,
+.openingstijden h3,
+.admin-kamers-lijst h2 {
     font-size: 1.5rem;
     color: var(--goud);
     margin-bottom: 25px;
     padding-bottom: 10px;
     border-bottom: 2px solid var(--licht-geel);
+}
+
+.menu-sectie-extra {
+    margin-top: 40px;
+}
+
+.openingstijden-extra {
+    margin-top: 30px;
 }
 
 .menu-item {
@@ -489,7 +540,12 @@ img {
     margin-left: 20px;
 }
 
-.openingstijden {
+.openingstijden,
+.contact-info-kaart,
+.contact-formulier,
+.reservering-formulier,
+.admin-kamers-lijst,
+.reservering-info-kaart {
     background: var(--wit);
     padding: 40px;
     border-radius: 10px;
@@ -497,12 +553,12 @@ img {
     border: 1px solid rgba(181, 146, 92, 0.15);
 }
 
-.openingstijden h3 {
-    font-size: 1.5rem;
-    color: var(--goud);
-    margin-bottom: 25px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--licht-geel);
+.admin-kamers-lijst {
+    margin-top: 40px;
+}
+
+.reservering-info-kaart {
+    align-self: end;
 }
 
 .uren-rij {
@@ -562,11 +618,6 @@ img {
     transform: translateY(-2px);
 }
 
-.btn-wit:hover {
-    background: var(--licht-geel);
-    transform: translateY(-2px);
-}
-
 .verhaal-sectie {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -581,6 +632,7 @@ img {
     position: relative;
 }
 
+/* Goudkleurig omlijsting-hoekje achter de foto: ::after tekent een extra vlak op -15px linksboven. */
 .verhaal-afbeelding::after {
     content: '';
     position: absolute;
@@ -690,15 +742,11 @@ img {
     align-items: start;
 }
 
-.contact-info-kaart {
-    background: var(--wit);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(181, 146, 92, 0.15);
-}
-
-.contact-info-kaart h3 {
+.contact-info-kaart h3,
+.contact-formulier h3,
+.reservering-formulier h2,
+.reservering-formulier h3,
+.reservering-info-kaart h3 {
     font-size: 1.5rem;
     color: var(--goud);
     margin-bottom: 30px;
@@ -736,22 +784,6 @@ img {
 .info-tekst p {
     color: var(--tekst-licht);
     font-size: 0.9rem;
-}
-
-.contact-formulier {
-    background: var(--wit);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(181, 146, 92, 0.15);
-}
-
-.contact-formulier h3 {
-    font-size: 1.5rem;
-    color: var(--goud);
-    margin-bottom: 30px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--licht-geel);
 }
 
 .formulier-rij {
@@ -833,37 +865,147 @@ img {
     align-items: start;
 }
 
-.reservering-formulier {
-    background: var(--wit);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(181, 146, 92, 0.15);
+.admin-formulier-rij {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
 }
 
-.reservering-formulier h3 {
-    font-size: 1.5rem;
+.admin-checkbox-rij {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 25px 0;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--tekst);
+}
+
+.admin-checkbox-rij input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--goud);
+    cursor: pointer;
+}
+
+.admin-knoppen {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.admin-knoppen .btn-verstuur {
+    flex: 1;
+}
+
+.btn-wit-goud {
+    background: transparent;
     color: var(--goud);
-    margin-bottom: 30px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--licht-geel);
+    padding: 14px 30px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    border-radius: 4px;
+    border: 1px solid var(--goud);
 }
 
-.reservering-info-kaart {
-    background: var(--wit);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(181, 146, 92, 0.15);
-    align-self: end;
+.btn-wit-goud:hover {
+    background: var(--goud);
+    color: var(--wit);
 }
 
-.reservering-info-kaart h3 {
-    font-size: 1.5rem;
+.admin-kamer-kop,
+.admin-kamer-rij {
+    display: grid;
+    grid-template-columns: 90px 1fr 110px 140px 110px;
+    gap: 15px;
+    align-items: center;
+    padding: 14px 10px;
+}
+
+.admin-kamer-kop {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--tekst-licht);
+    border-bottom: 1px solid rgba(181, 146, 92, 0.2);
+}
+
+.admin-kamer-rij {
+    border-bottom: 1px solid rgba(181, 146, 92, 0.1);
+    font-size: 0.95rem;
+    transition: background 0.3s ease;
+}
+
+.admin-kamer-rij:hover {
+    background: var(--achtergrond);
+}
+
+.admin-kamer-rij:last-child {
+    border-bottom: none;
+}
+
+.admin-kamer-nummer {
+    font-weight: 700;
     color: var(--goud);
-    margin-bottom: 30px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--licht-geel);
+}
+
+.admin-kamer-type {
+    font-weight: 600;
+}
+
+.admin-kamer-prijs {
+    color: var(--tekst-licht);
+}
+
+.admin-status {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.admin-status-beschikbaar {
+    background: #E8F5E9;
+    color: #2E7D32;
+}
+
+.admin-status-niet {
+    background: #FDECEA;
+    color: #C62828;
+}
+
+.btn-bewerk {
+    text-align: center;
+}
+
+.btn-bewerk a {
+    display: inline-block;
+    background: var(--goud);
+    color: var(--wit);
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+
+.formulier-veld input[readonly] {
+    background: var(--achtergrond);
+    color: var(--tekst-licht);
+    cursor: not-allowed;
 }
 
 .reservering-info-kaart .info-item {
@@ -1101,6 +1243,7 @@ img {
     border: 1px solid #EF9A9A;
 }
 
+/* Media queries passen het ontwerp aan de breedte van het scherm aan (hier: tablet en kleiner). */
 @media (max-width: 992px) {
     .voordelen-grid,
     .kamers-grid {
@@ -1131,6 +1274,7 @@ img {
     }
 }
 
+/* Max-width 768px = telefoons. Het menu en de kolommen stapelen onder elkaar. */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
@@ -1182,6 +1326,25 @@ img {
 
     .formulier-rij {
         grid-template-columns: 1fr;
+    }
+
+    .admin-formulier-rij {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-kamer-kop,
+    .admin-kamer-rij {
+        grid-template-columns: 1fr;
+        text-align: left;
+    }
+
+    .admin-knoppen {
+        flex-direction: column;
+    }
+
+    .admin-knoppen .btn-verstuur,
+    .btn-wit-goud {
+        width: 100%;
     }
 
     .footer-onder {
