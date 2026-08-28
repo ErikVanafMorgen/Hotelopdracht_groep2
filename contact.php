@@ -30,7 +30,7 @@ if (isset($_POST['verstuur'])) {
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/navbar.php'; ?>
 
-<section class="contact-hero">
+<section class="pagina-banner">
     <div>
         <h1>Contact</h1>
         <p>Heeft u vragen of wilt u meer informatie? Wij helpen u graag verder.</p>
@@ -131,20 +131,4 @@ if (isset($_POST['verstuur'])) {
     </div>
 </section>
 
-<script>
-document.getElementById('ContactForm').addEventListener('submit', function(e) {
-    const input = document.getElementById('telefoon');
-    const errorDiv = document.getElementById('error');
-    
-    if (!/^[0-9\s\-\(\)]+$/.test(input.value)) {
-        e.preventDefault();
-        errorDiv.textContent = "Please enter a valid phone number.";
-    } else {
-        errorDiv.textContent = "";
-    }
-});
-</script>
-
 <?php include 'includes/footer.php'; ?>
-
-</html>

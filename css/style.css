@@ -44,9 +44,6 @@ img {
     display: block;
 }
 
-/* ========================================
-   NAVBAR
-   ======================================== */
 .navbar {
     position: fixed;
     top: 0;
@@ -73,25 +70,10 @@ img {
     height: 80px;
 }
 
-.nav-logo {
-    display: flex;
-    flex-direction: column;
-}
-
-.nav-logo .logo-naam {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--goud);
-    letter-spacing: 1px;
-}
-
-.nav-logo .logo-sub {
-    font-size: 0.65rem;
-    color: var(--tekst-licht);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-top: -2px;
+.nav-logo img {
+    height: 44px;
+    width: auto;
+    display: block;
 }
 
 .nav-links {
@@ -163,7 +145,6 @@ img {
     box-shadow: 0 5px 20px rgba(107, 63, 160, 0.3);
 }
 
-/* Mobile menu */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -178,13 +159,10 @@ img {
     transition: all 0.3s ease;
 }
 
-/* ========================================
-   HERO SECTIE
-   ======================================== */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     min-height: 600px;
-    background: linear-gradient(135deg, rgba(74, 32, 112, 0.6), rgba(107, 63, 160, 0.4)),
+    background: linear-gradient(135deg, rgba(45, 45, 45, 0.65), rgba(45, 45, 45, 0.45)),
                 url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80') center/cover no-repeat;
     display: flex;
     align-items: center;
@@ -211,6 +189,13 @@ img {
     padding: 0 20px;
 }
 
+.hero-logo {
+    width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+}
+
 .hero-subtitle {
     font-size: 0.9rem;
     text-transform: uppercase;
@@ -221,20 +206,20 @@ img {
 }
 
 .hero h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    line-height: 1.1;
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 15px;
+    line-height: 1.2;
 }
 
 .hero p {
     font-size: 1.15rem;
     margin-bottom: 40px;
-    opacity: 0.9;
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
-    font-weight: 300;
+    font-family: 'Lato', sans-serif;
+    line-height: 1.7;
 }
 
 .hero-buttons {
@@ -285,9 +270,6 @@ img {
     color: var(--paars);
 }
 
-/* ========================================
-   SECTIE STANDAARD
-   ======================================== */
 .sectie {
     padding: 100px 40px;
     max-width: 1200px;
@@ -328,9 +310,6 @@ img {
     margin: 20px auto;
 }
 
-/* ========================================
-   VOORDELEN / Kenmerken
-   ======================================== */
 .voordelen-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -370,9 +349,6 @@ img {
     line-height: 1.7;
 }
 
-/* ========================================
-   KAMERS
-   ======================================== */
 .kamers-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -458,33 +434,6 @@ img {
 .btn-kamer:hover {
     background: var(--goud);
     color: var(--wit);
-}
-
-/* ========================================
-   RESTAURANT
-   ======================================== */
-.restaurant-hero {
-    background: linear-gradient(135deg, rgba(74, 32, 112, 0.7), rgba(107, 63, 160, 0.5)),
-                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1920&q=80') center/cover no-repeat;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--wit);
-    padding: 120px 20px 80px;
-}
-
-.restaurant-hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 15px;
-}
-
-.restaurant-hero p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    max-width: 600px;
-    font-weight: 300;
 }
 
 .restaurant-content {
@@ -613,33 +562,6 @@ img {
     transform: translateY(-2px);
 }
 
-/* ========================================
-   OVER ONS
-   ======================================== */
-.ons-hero {
-    background: linear-gradient(135deg, rgba(74, 32, 112, 0.7), rgba(107, 63, 160, 0.5)),
-                url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1920&q=80') center/cover no-repeat;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--wit);
-    padding: 120px 20px 80px;
-}
-
-.ons-hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 15px;
-}
-
-.ons-hero p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    max-width: 600px;
-    font-weight: 300;
-}
-
 .verhaal-sectie {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -754,33 +676,6 @@ img {
 .team-lid p {
     color: var(--tekst-licht);
     font-size: 0.9rem;
-}
-
-/* ========================================
-   CONTACT
-   ======================================== */
-.contact-hero {
-    background: linear-gradient(135deg, rgba(74, 32, 112, 0.7), rgba(107, 63, 160, 0.5)),
-                url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1920&q=80') center/cover no-repeat;
-    min-height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--wit);
-    padding: 120px 20px 80px;
-}
-
-.contact-hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 15px;
-}
-
-.contact-hero p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    max-width: 600px;
-    font-weight: 300;
 }
 
 .contact-layout {
@@ -926,9 +821,6 @@ img {
     box-shadow: 0 5px 20px rgba(107, 63, 160, 0.3);
 }
 
-/* ========================================
-   RESERVERINGSPAGINA
-   ======================================== */
 .reservering-layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -1015,9 +907,6 @@ img {
     color: var(--paars);
 }
 
-/* ========================================
-   FOOTER
-   ======================================== */
 .footer {
     background: var(--tekst);
     color: var(--wit);
@@ -1033,12 +922,11 @@ img {
     margin-bottom: 60px;
 }
 
-.footer-brand .logo-naam {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--goud);
-    margin-bottom: 15px;
+.footer-brand .footer-logo {
+    height: 52px;
+    width: auto;
+    display: block;
+    margin-bottom: 20px;
 }
 
 .footer-brand p {
@@ -1109,11 +997,8 @@ img {
     color: rgba(255, 255, 255, 0.4);
 }
 
-/* ========================================
-   PAGINA SPECIFIEKE STYLING
-   ======================================== */
 .pagina-banner {
-    background: linear-gradient(135deg, rgba(74, 32, 112, 0.7), rgba(107, 63, 160, 0.5)),
+    background: linear-gradient(135deg, rgba(45, 45, 45, 0.75), rgba(45, 45, 45, 0.55)),
                 url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80') center/cover no-repeat;
     min-height: 350px;
     display: flex;
@@ -1131,7 +1016,9 @@ img {
 
 .pagina-banner p {
     font-size: 1.1rem;
-    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
 }
 
 .breadcrumb {
@@ -1144,9 +1031,6 @@ img {
     color: var(--licht-geel);
 }
 
-/* ========================================
-   INLOGGEN / REGISTREREN
-   ======================================== */
 .auth-sectie {
     min-height: calc(100vh - 80px);
     display: flex;
@@ -1203,7 +1087,6 @@ img {
     color: var(--paars);
 }
 
-/* Berichten */
 .bericht {
     padding: 12px 20px;
     border-radius: 4px;
@@ -1223,9 +1106,6 @@ img {
     border: 1px solid #EF9A9A;
 }
 
-/* ========================================
-   RESPONSIVE
-   ======================================== */
 @media (max-width: 992px) {
     .voordelen-grid,
     .kamers-grid {
@@ -1291,6 +1171,14 @@ img {
 
     .hero h1 {
         font-size: 2.5rem;
+    }
+
+    .hero-logo {
+        width: 140px;
+    }
+
+    .nav-logo img {
+        height: 36px;
     }
 
     .sectie {

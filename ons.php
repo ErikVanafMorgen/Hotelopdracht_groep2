@@ -2,10 +2,10 @@
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/navbar.php'; ?>
 
-<section class="ons-hero">
+<section class="pagina-banner">
     <div>
-        <h1>Over Hotel Zonne Vallei</h1>
-        <p>Gastvrijheid, luxe en aandacht voor detail — dat is waar wij voor staan.</p>
+        <h1>Welkom bij Hotel De Zonne Vallei</h1>
+        <p>Bij Hotel De Zonne Vallei streven we ernaar om elke gast een onvergetelijke ervaring te bieden, doordrenkt met luxe, comfort en uitzonderlijke gastvrijheid. Gelegen in het hart van Alkmaar, biedt ons hotel de perfecte uitvalsbasis om deze historische en charmante stad te ontdekken.</p>
         <div class="breadcrumb"><a href="index.php">Home</a> / Over Ons</div>
     </div>
 </section>
@@ -14,69 +14,32 @@
     <div class="verhaal-sectie">
         <div class="verhaal-afbeelding"></div>
         <div class="verhaal-tekst">
-            <span class="ondertitel">Ons Verhaal</span>
-            <h3>Van Droom naar Hotel</h3>
-            <p>Hotel De Zonne Vallei is opgericht door Bouke van Zon, een ondernemer met een passie voor gastvrijheid en een scherp oog voor detail. Met jarenlange ervaring in de horeca heeft hij een plek gecreëerd waar gasten zich thuis voelen.</p>
-            <p>Wat begon als een droom is uitgegroeid tot een hotel dat bekendstaat om zijn warme sfeer, persoonlijke service en culinaire verwennerij.</p>
+            <span class="ondertitel" style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 4px; color: var(--goud); display: block; margin-bottom: 10px;">Ons Verhaal</span>
+            <h3>Ons Verhaal</h3>
+            <p>Hotel De Zonne Vallei is opgericht door Bouke van Zon, een visionaire ondernemer met een passie voor gastvrijheid en een scherp oog voor detail. 
+                Met jarenlange ervaring in de horeca-industrie heeft Bouke zijn droom verwezenlijkt om een uniek hotel te creëren waar gasten zich thuis voelen en kunnen genieten van alle gemakken en luxe die het leven te bieden heeft.</p>
         </div>
     </div>
 </section>
 
 <section class="sectie">
     <div class="sectie-kop">
-        <span class="ondertitel">Wat ons drijft</span>
+        <span class="ondertitel"></span>
+        <div class="lijn"></div>
         <h2>Onze Waarden</h2>
-        <div class="lijn"></div>
-    </div>
-    <div class="waarden-grid">
-        <div class="waarde-kaart">
-            <div class="waarde-icoon">&#9733;</div>
-            <h4>Kwaliteit</h4>
-            <p>Wij leveren altijd de hoogste kwaliteit, van de inrichting van onze kamers tot de gerechten in ons restaurant.</p>
-        </div>
-        <div class="waarde-kaart">
-            <div class="waarde-icoon">&#9829;</div>
-            <h4>Gastvrijheid</h4>
-            <p>Elke gast verdient persoonlijke aandacht. Wij staan altijd klaar om uw verblijf onvergetelijk te maken.</p>
-        </div>
-        <div class="waarde-kaart">
-            <div class="waarde-icoon">&#9788;</div>
-            <h4>Lokale Sfeer</h4>
-            <p>Wij halen inspiratie uit Alkmaar — lokale producten, regionale gerechten en de charme van de stad.</p>
-        </div>
-        <div class="waarde-kaart">
-            <div class="waarde-icoon">&#10047;</div>
-            <h4>Duurzaamheid</h4>
-            <p>Met oog voor het milieu kiezen wij bewust voor duurzame en verantwoorde keuzes in alles wat wij doen.</p>
-        </div>
+        <p>Bij Hotel De Zonne Vallei staan kwaliteit, gastvrijheid en persoonlijke service centraal. 
+            Wij geloven dat elk detail bijdraagt aan een perfecte ervaring, van de smaakvolle inrichting van onze kamers tot de culinaire hoogstandjes in ons restaurant. 
+            Ons toegewijde team staat altijd klaar om aan al uw wensen te voldoen en ervoor te zorgen dat uw verblijf zo aangenaam mogelijk is.</p>
     </div>
 </section>
 
 <section class="sectie">
     <div class="sectie-kop">
-        <span class="ondertitel">De mensen achter het hotel</span>
-        <h2>Ons Team</h2>
+        <span class="ondertitel"></span>
         <div class="lijn"></div>
-    </div>
-    <div class="team-grid">
-        <div class="team-lid">
-            <div class="team-foto">B</div>
-            <h4>Bouke van Zon</h4>
-            <div class="functie">Eigenaar</div>
-            <p>De drijvende kracht achter het hotel. Met passie en visie creëert hij een unieke ervaring voor elke gast.</p>
-        </div>
-        <div class="team-lid">
-            <div class="team-foto">L</div>
-            <h4>Lisa de Vries</h4>
-            <div class="functie">Restaurant Manager</div>
-            <p>Leidt ons keukenteam met enthousiasme en zorgt elke dag voor culinaire verrassingen op het bord.</p>
-        </div>
-        <div class="team-lid">
-            <div class="team-foto">M</div>
-            <h4>Mark Bakker</h4>
-            <div class="functie">Front Office Manager</div>
-            <p>Het eerste aanspreekpunt voor al uw vragen. Mark en zijn team zorgen dat u zich meteen welkom voelt.</p>
-        </div>
+        <h2>Ons Team</h2>
+        <p>Ons team van enthousiaste en professionele medewerkers deelt de visie van Bouke van Zon om elke gast een warm welkom en een onvergetelijk verblijf te bieden. 
+            Van de receptie tot het restaurant en de huishouding, elk teamlid speelt een cruciale rol in het creëren van de unieke sfeer en ervaring waar Hotel De Zonne Vallei om bekend staat.</p>
     </div>
 </section>
 
