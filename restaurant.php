@@ -6,7 +6,6 @@
     <div>
         <h1>Restaurant Zonne Vallei</h1>
         <p>Verse ingrediënten, seizoensgerechten en een warme sfeer — daar draait het om in ons restaurant.</p>
-        <div class="breadcrumb"><a href="index.php">Home</a> / Restaurant</div>
     </div>
 </section>
 

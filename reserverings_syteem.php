@@ -172,7 +172,6 @@ if (isset($_POST['verstuur'])) {
     <div>
         <h1>Reserveren</h1>
         <p>Reserveer eenvoudig uw ideale kamer bij Hotel Zonne Vallei</p>
-        <div class="breadcrumb"><a href="index.php">Home</a> / Reserveren</div>
     </div>
 </section>
 

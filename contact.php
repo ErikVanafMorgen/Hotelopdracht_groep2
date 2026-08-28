@@ -34,7 +34,6 @@ if (isset($_POST['verstuur'])) {
     <div>
         <h1>Contact</h1>
         <p>Heeft u vragen of wilt u meer informatie? Wij helpen u graag verder.</p>
-        <div class="breadcrumb"><a href="index.php">Home</a> / Contact</div>
     </div>
 </section>
 
