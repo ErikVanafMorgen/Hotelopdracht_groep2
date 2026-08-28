@@ -18,6 +18,11 @@ $bericht_type = '';
 include 'includes/connectie.php';
 
 $kamer_types = $pdo->query("SELECT DISTINCT kamer_type FROM Kamer ORDER BY kamer_type")->fetchAll(PDO::FETCH_COLUMN);
+$stmt_beschikbaarheid = $pdo->query("SELECT kamer_type, COUNT(*) AS aantal FROM Kamer WHERE beschikbaar = 1 GROUP BY kamer_type");
+$beschikbaarheid = [];
+foreach ($stmt_beschikbaarheid as $rij) {
+    $beschikbaarheid[$rij['kamer_type']] = (int) $rij['aantal'];
+}
 
 if (isset($_POST['verstuur'])) {
     $kamer_type = trim($_POST['kamer_type'] ?? '');
@@ -164,6 +169,11 @@ if (isset($_POST['verstuur'])) {
         $bericht_type = 'fout';
     }
 }
+
+$gekozen_kamer_type = $_POST['kamer_type'] ?? '';
+$kamer = [
+    'aantal' => $beschikbaarheid[$gekozen_kamer_type] ?? 0
+];
 ?>
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/navbar.php'; ?>
@@ -198,11 +208,21 @@ if (isset($_POST['verstuur'])) {
                     <div class="formulier-veld full">
                         <label for="kamer_type">Kamer_type</label>
                         <select id="kamer_type" name="kamer_type" required>
-                            <option value="" disabled selected>Selecteer een kamertype</option>
+                            <option value="" disabled <?php echo $gekozen_kamer_type === '' ? 'selected' : ''; ?>>Selecteer een kamertype</option>
                             <?php foreach ($kamer_types as $type): ?>
-                                <option value="<?php echo htmlspecialchars($type, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($type, ENT_QUOTES, 'UTF-8'); ?></option>
+                                <?php $aantal_type = $beschikbaarheid[$type] ?? 0; ?>
+                                <option value="<?php echo htmlspecialchars($type, ENT_QUOTES, 'UTF-8'); ?>" data-aantal="<?php echo $aantal_type; ?>" <?php echo $aantal_type === 0 ? 'disabled' : ''; ?> <?php echo $gekozen_kamer_type === $type && $aantal_type > 0 ? 'selected' : ''; ?>><?php echo htmlspecialchars($type, ENT_QUOTES, 'UTF-8'); ?></option>
                             <?php endforeach; ?>
                         </select>
+                        <div class="beschikbaarheid-status">
+                            <?php if ($gekozen_kamer_type !== ''): ?>
+                                <?php if ($kamer['aantal'] > 0): ?>
+                                    <span class="badge in-stock">Nog <?php echo $kamer['aantal']; ?> beschikbaar</span>
+                                <?php else: ?>
+                                    <span class="badge out-of-stock">Volgeboekt</span>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
                 <div class="formulier-rij">
@@ -223,6 +243,15 @@ if (isset($_POST['verstuur'])) {
                 </div>
                 <button type="submit" class="btn-verstuur" name="verstuur">Reserveer Nu</button>
             </form>
+            <script>
+                document.getElementById('kamer_type').addEventListener('change', function () {
+                    const status = document.querySelector('.beschikbaarheid-status');
+                    const aantal = Number(this.options[this.selectedIndex].dataset.aantal || 0);
+                    status.innerHTML = aantal > 0
+                        ? '<span class="badge in-stock">Nog ' + aantal + ' beschikbaar</span>'
+                        : '<span class="badge out-of-stock">Volgeboekt</span>';
+                });
+            </script>
         </div>
 
         <div class="reservering-info-kaart">
