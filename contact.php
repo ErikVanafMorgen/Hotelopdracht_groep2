@@ -115,6 +115,7 @@ if (isset($_POST['verstuur'])) {
                             <option value="Reservering">Reservering</option>
                             <option value="Restaurant">Restaurant</option>
                             <option value="Klacht">Klacht</option>
+                            <option value="Annuleren">Annuleren</option>
                             <option value="Technisch probleem">Technisch probleem</option>
                         </select>
                     </div>
