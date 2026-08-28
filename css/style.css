@@ -72,23 +72,13 @@ img {
 
 .nav-logo {
     display: flex;
-    flex-direction: column;
+    align-items: center;
 }
 
-.nav-logo .logo-naam {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 700;
-    color: var(--goud);
-    letter-spacing: 1px;
-}
-
-.nav-logo .logo-sub {
-    font-size: 0.65rem;
-    color: var(--tekst-licht);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-top: -2px;
+.nav-logo img {
+    height: 36px;
+    width: auto;
+    display: block;
 }
 
 .nav-links {
@@ -202,6 +192,13 @@ img {
     z-index: 2;
     max-width: 800px;
     padding: 0 20px;
+}
+
+.hero-logo {
+    width: 280px;
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
 }
 
 .hero-subtitle {
@@ -930,12 +927,11 @@ img {
     margin-bottom: 60px;
 }
 
-.footer-brand .logo-naam {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--goud);
-    margin-bottom: 15px;
+.footer-brand .footer-logo {
+    height: 46px;
+    width: auto;
+    display: block;
+    margin-bottom: 20px;
 }
 
 .footer-brand p {
@@ -1170,6 +1166,14 @@ img {
 
     .hero h1 {
         font-size: 2.5rem;
+    }
+
+    .hero-logo {
+        width: 180px;
+    }
+
+    .nav-logo img {
+        height: 30px;
     }
 
     .sectie {
