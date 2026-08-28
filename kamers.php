@@ -11,7 +11,7 @@ $kamer_afbeeldingen = [
     'Bruidsuite' => 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80'
 ];
 ?>
-<!-- Header, navigatie en footer staan in aparte bestanden (includes). Zo hoef je HTML maar op een plek aan te passen. -->
+
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/navbar.php'; ?>
 
