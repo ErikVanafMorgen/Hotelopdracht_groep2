@@ -70,10 +70,25 @@ img {
     height: 80px;
 }
 
-.nav-logo img {
-    height: 44px;
-    width: auto;
-    display: block;
+.nav-logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-logo .logo-naam {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--goud);
+    letter-spacing: 1px;
+}
+
+.nav-logo .logo-sub {
+    font-size: 0.65rem;
+    color: var(--tekst-licht);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-top: -2px;
 }
 
 .nav-links {
@@ -160,7 +175,7 @@ img {
 }
 
 .hero {
-    min-height: 100vh;
+    height: 100vh;
     min-height: 600px;
     background: linear-gradient(135deg, rgba(45, 45, 45, 0.65), rgba(45, 45, 45, 0.45)),
                 url('https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1920&q=80') center/cover no-repeat;
@@ -187,13 +202,6 @@ img {
     z-index: 2;
     max-width: 800px;
     padding: 0 20px;
-}
-
-.hero-logo {
-    width: 200px;
-    height: auto;
-    display: block;
-    margin: 0 auto 20px;
 }
 
 .hero-subtitle {
@@ -922,11 +930,12 @@ img {
     margin-bottom: 60px;
 }
 
-.footer-brand .footer-logo {
-    height: 52px;
-    width: auto;
-    display: block;
-    margin-bottom: 20px;
+.footer-brand .logo-naam {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--goud);
+    margin-bottom: 15px;
 }
 
 .footer-brand p {
@@ -1019,16 +1028,6 @@ img {
     max-width: 700px;
     margin: 0 auto;
     line-height: 1.7;
-}
-
-.breadcrumb {
-    margin-top: 15px;
-    font-size: 0.85rem;
-    opacity: 0.7;
-}
-
-.breadcrumb a {
-    color: var(--licht-geel);
 }
 
 .auth-sectie {
@@ -1171,14 +1170,6 @@ img {
 
     .hero h1 {
         font-size: 2.5rem;
-    }
-
-    .hero-logo {
-        width: 140px;
-    }
-
-    .nav-logo img {
-        height: 36px;
     }
 
     .sectie {
