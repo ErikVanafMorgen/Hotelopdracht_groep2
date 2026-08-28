@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h2>Account Aanmaken</h2>
         <p class="auth-sub">Registreer uzelf om kamers te reserveren.</p>
 
+        <!-- Bericht wordt alleen getoond als er een melding is (bijv. foutmelding of bevestiging na het versturen). -->
         <?php if ($bericht): ?>
             <div class="bericht <?php echo $bericht_type === 'succes' ? 'bericht-succes' : 'bericht-fout'; ?>">
                 <?php echo $bericht; ?>

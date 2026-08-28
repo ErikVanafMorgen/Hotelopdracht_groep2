@@ -203,6 +203,7 @@ $kamer = [
         <div class="reservering-formulier">
             <h3>Uw Gegevens</h3>
 
+            <!-- Bericht wordt alleen getoond als er een melding is (bijv. foutmelding of bevestiging na het versturen). -->
             <?php if ($bericht): ?>
                 <div class="bericht <?php echo $bericht_type === 'succes' ? 'bericht-succes' : 'bericht-fout'; ?>">
                     <?php echo $bericht; ?>
@@ -234,6 +235,7 @@ $kamer = [
                     </div>
                 </div>
                 <div class="formulier-rij">
+                    <!-- min/max beperken de datumkeuze: niet in het verleden en maximaal 1 jaar vooruit. -->
                     <div class="formulier-veld">
                         <label for="start_datum">Aankomst</label>
                         <input type="date" id="start_datum" name="start_datum" min="<?php echo date('Y-m-d'); ?>" max="<?php echo date('Y-m-d', strtotime('+1 year')); ?>" required>

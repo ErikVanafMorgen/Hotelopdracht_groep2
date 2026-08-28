@@ -1,4 +1,5 @@
 <?php $pagina_titel = 'Home'; ?>
+<!-- Header, navigatie en footer staan in aparte bestanden (includes). Zo hoef je HTML maar op een plek aan te passen. -->
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/navbar.php'; ?>
 
@@ -46,8 +47,8 @@
     </div>
 </section>
 
-<section class="sectie" style="background: var(--wit); padding: 100px 40px; max-width: none;">
-    <div style="max-width: 1200px; margin: 0 auto;">
+<section class="sectie sectie-wit">
+    <div class="container-1200">
         <div class="sectie-kop">
             <span class="ondertitel">Onze Kamers</span>
             <h2>Comfort & Luxe</h2>
@@ -56,8 +57,8 @@
         </div>
         <div class="kamers-grid">
             <div class="kamer-kaart">
-                <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&q=80')">
-                    <span class="kamer-prijs">Vanaf &euro;89,- /nacht</span>
+                <div class="kamer-afbeelding kamer-foto-1">
+                    <span class="kamer-prijs">Vanaf &euro;109,- /nacht</span>
                 </div>
                 <div class="kamer-info">
                     <h3>Comfort Kamer</h3>
@@ -75,7 +76,7 @@
             </div>
 
             <div class="kamer-kaart">
-                <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80')">
+                <div class="kamer-afbeelding kamer-foto-2">
                     <span class="kamer-prijs">Vanaf &euro;139,- /nacht</span>
                 </div>
                 <div class="kamer-info">
@@ -95,7 +96,7 @@
             </div>
 
             <div class="kamer-kaart">
-                <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80')">
+                <div class="kamer-afbeelding kamer-foto-4">
                     <span class="kamer-prijs">Vanaf &euro;179,- /nacht</span>
                 </div>
                 <div class="kamer-info">
@@ -125,10 +126,10 @@
         <div class="lijn"></div>
     </div>
     <div class="restaurant-content">
-        <div>
-            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--goud); margin-bottom: 20px;">Ontbijt, Lunch & Diner</h3>
-            <p style="color: var(--tekst); line-height: 1.8; margin-bottom: 15px;">Verse ingrediënten, lokale producten en pure passie — dat proeft u in elke hap. Onze chef-kok creëert dagelijks gerechten die verrassen.</p>
-            <p style="color: var(--tekst-licht); line-height: 1.8; margin-bottom: 25px;">Van een rustig ontbijt tot een verfijnd driegangendiner. Ons menu wisselt met de seizoenen, zodat er altijd iets nieuws op u wacht.</p>
+        <div class="restaurant-intro">
+            <h3>Ontbijt, Lunch & Diner</h3>
+            <p>Verse ingrediënten, lokale producten en pure passie — dat proeft u in elke hap. Onze chef-kok creëert dagelijks gerechten die verrassen.</p>
+            <p>Van een rustig ontbijt tot een verfijnd driegangendiner. Ons menu wisselt met de seizoenen, zodat er altijd iets nieuws op u wacht.</p>
             <a href="restaurant.php" class="btn-primary">Bekijk Ons Menu</a>
         </div>
         <div class="openingstijden">
@@ -140,8 +141,8 @@
     </div>
 </section>
 
-<section class="sectie" style="background: var(--wit); padding: 80px 40px; max-width: none;">
-    <div class="reservering-banner" style="max-width: 1200px; margin: 0 auto;">
+<section class="sectie sectie-wit-klein">
+    <div class="reservering-banner container-1200">
         <h3>Plan Uw Verblijf</h3>
         <p>Reserveer nu uw kamer en geniet van een onvergetelijke ervaring bij Hotel Zonne Valei.</p>
         <a href="reserverings_syteem.php" class="btn-wit">Reserveer Nu</a>
