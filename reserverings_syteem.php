@@ -16,6 +16,12 @@ $pagina_titel = 'Reserveren';
 $bericht = null;
 $bericht_type = '';
 
+if (isset($_SESSION['reserverings_bericht'])) {
+    $bericht = $_SESSION['reserverings_bericht']['tekst'];
+    $bericht_type = $_SESSION['reserverings_bericht']['type'];
+    unset($_SESSION['reserverings_bericht']);
+}
+
 include 'includes/connectie.php';
 
 // Haalt de beschikbare kamertypes met beschikbaarheid op
@@ -174,6 +180,15 @@ if (isset($_POST['verstuur'])) {
         $bericht = "Vul alle verplichte velden in.";
         $bericht_type = 'fout';
     }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $bericht_type === 'succes') {
+    $_SESSION['reserverings_bericht'] = [
+        'tekst' => $bericht,
+        'type' => $bericht_type
+    ];
+    header('Location: reserverings_syteem.php');
+    exit;
 }
 
 $gekozen_kamer_type = $_POST['kamer_type'] ?? '';
