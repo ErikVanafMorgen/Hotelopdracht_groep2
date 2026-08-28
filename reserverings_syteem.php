@@ -3,6 +3,7 @@ session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+// Importeert de PHPMailer
 use PHPMailer\PHPMailer\Exception as MailException;
 use PHPMailer\PHPMailer\PHPMailer;
 
@@ -17,6 +18,7 @@ $bericht_type = '';
 
 include 'includes/connectie.php';
 
+// Haalt de beschikbare kamertypes met beschikbaarheid op
 $kamer_types = $pdo->query("SELECT DISTINCT kamer_type FROM Kamer ORDER BY kamer_type")->fetchAll(PDO::FETCH_COLUMN);
 $stmt_beschikbaarheid = $pdo->query("SELECT kamer_type, COUNT(*) AS aantal FROM Kamer WHERE beschikbaar = 1 GROUP BY kamer_type");
 $beschikbaarheid = [];
@@ -24,6 +26,7 @@ foreach ($stmt_beschikbaarheid as $rij) {
     $beschikbaarheid[$rij['kamer_type']] = (int) $rij['aantal'];
 }
 
+// Verwerkt het reserveringsformulier met validatie
 if (isset($_POST['verstuur'])) {
     $kamer_type = trim($_POST['kamer_type'] ?? '');
     $start_datum = trim($_POST['start_datum'] ?? '');
@@ -44,6 +47,7 @@ if (isset($_POST['verstuur'])) {
             $bericht = "Voer een geldig creditcardnummer in.";
             $bericht_type = 'fout';
         } else {
+            // Controleert of het geselecteerde kamertype beschikbaar is in de opgegeven periode
             try {
                 $stmt_kamer = $pdo->prepare("SELECT k.kamer_nummer AS kamer_id, k.kamer_nummer, k.kamer_type, k.prijs_per_nacht
                     FROM Kamer k
@@ -67,6 +71,7 @@ if (isset($_POST['verstuur'])) {
                     $bericht = "Dit kamertype is helaas niet beschikbaar in de geselecteerde periode.";
                     $bericht_type = 'fout';
                 } else {
+                    // Haalt het e-mailadres van de ingelogde gebruiker op
                     $stmt_gebruiker = $pdo->prepare("SELECT email FROM Gebruikers WHERE id = :id");
                     $stmt_gebruiker->execute([':id' => $_SESSION['gebruiker_id']]);
                     $gebruiker = $stmt_gebruiker->fetch(PDO::FETCH_ASSOC);
@@ -75,6 +80,7 @@ if (isset($_POST['verstuur'])) {
                         $bericht = "Uw account heeft geen geldig e-mailadres. Pas uw accountgegevens aan en probeer opnieuw.";
                         $bericht_type = 'fout';
                     } else {
+                        // Voert de reservering uit
                         $pdo->beginTransaction();
                         $stmt = $pdo->prepare("INSERT INTO Reserveringen (email, Gebruikers_id, kamer_nummer, kamer_type, start_datum, eind_datum, creditcardnummer) VALUES (:email, :gebruiker, :kamer_nummer, :kamer_type, :start, :eind, :creditcard)");
                         $stmt->execute([
@@ -92,7 +98,7 @@ if (isset($_POST['verstuur'])) {
                             throw new PDOException('De kamer is ondertussen door een andere reservering toegewezen.');
                         }
                         $pdo->commit();
-
+                        // Bereidt de e-mail voor en verstuurt deze
                         $onderwerp = 'Verificatie van uw reservering - Hotel Zonne Vallei';
                         $kamer_type_mail = htmlspecialchars($kamer['kamer_type'], ENT_QUOTES, 'UTF-8');
                         $aankomst_mail = htmlspecialchars($start_datum, ENT_QUOTES, 'UTF-8');
@@ -119,13 +125,13 @@ if (isset($_POST['verstuur'])) {
                             '</table><p style="margin:0;line-height:1.6;">Met vriendelijke groet,<br>Hotel Zonne Vallei</p></div></body></html>';
                         $mail_verstuurd = false;
                         try {
+                            // Haalt de SMTP-configuratie op uit de omgevingsvariabelen
                             $smtp_username = getenv('SMTP_USERNAME') ?: '';
                             $smtp_password = getenv('SMTP_PASSWORD') ?: '';
                             $afzender = getenv('MAIL_FROM') ?: $smtp_username;
                             if (!$smtp_username || !$smtp_password || !filter_var($afzender, FILTER_VALIDATE_EMAIL)) {
                                 throw new MailException('Gmail SMTP-configuratie ontbreekt.');
                             }
-
                             $mail = new PHPMailer(true);
                             $mail->isSMTP();
                             $mail->Host = 'smtp.gmail.com';
@@ -210,11 +216,13 @@ $kamer = [
                         <select id="kamer_type" name="kamer_type" required>
                             <option value="" disabled <?php echo $gekozen_kamer_type === '' ? 'selected' : ''; ?>>Selecteer een kamertype</option>
                             <?php foreach ($kamer_types as $type): ?>
+                                // Haalt het aantal beschikbare kamers voor het huidige kamertype op, maar als het kamertype niet beschikbaar is, wordt het uitgeschakeld in de dropdown.
                                 <?php $aantal_type = $beschikbaarheid[$type] ?? 0; ?>
                                 <option value="<?php echo htmlspecialchars($type, ENT_QUOTES, 'UTF-8'); ?>" data-aantal="<?php echo $aantal_type; ?>" <?php echo $aantal_type === 0 ? 'disabled' : ''; ?> <?php echo $gekozen_kamer_type === $type && $aantal_type > 0 ? 'selected' : ''; ?>><?php echo htmlspecialchars($type, ENT_QUOTES, 'UTF-8'); ?></option>
                             <?php endforeach; ?>
                         </select>
                         <div class="beschikbaarheid-status">
+                            // Toont de beschikbaarheid van het geselecteerde kamertype.
                             <?php if ($gekozen_kamer_type !== ''): ?>
                                 <?php if ($kamer['aantal'] > 0): ?>
                                     <span class="badge in-stock">Nog <?php echo $kamer['aantal']; ?> beschikbaar</span>
@@ -243,6 +251,7 @@ $kamer = [
                 </div>
                 <button type="submit" class="btn-verstuur" name="verstuur">Reserveer Nu</button>
             </form>
+            // Script dat de beschikbaarheid van het geselecteerde kamertype bijwerkt wanneer de gebruiker een ander kamertype selecteert.
             <script>
                 document.getElementById('kamer_type').addEventListener('change', function () {
                     const status = document.querySelector('.beschikbaarheid-status');

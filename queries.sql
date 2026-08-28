@@ -2,6 +2,7 @@ CREATE DATABASE IF NOT EXISTS Zonne_vallei;
 
 USE Zonne_vallei;
 
+// Tabel voor gebruikers.
 CREATE TABLE IF NOT EXISTS Gebruikers (
     id INT AUTO_INCREMENT PRIMARY KEY,
     gebruikersnaam VARCHAR(50) NOT NULL UNIQUE,
@@ -11,6 +12,7 @@ CREATE TABLE IF NOT EXISTS Gebruikers (
     aangemaakt_op TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+// Tabel voor kamers.
 CREATE TABLE IF NOT EXISTS Kamer (
     id INT AUTO_INCREMENT PRIMARY KEY,
     kamer_nummer INT NOT NULL UNIQUE,
@@ -20,6 +22,7 @@ CREATE TABLE IF NOT EXISTS Kamer (
     aangemaakt_op TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+// Tabel met voorbeeldkamers.
 INSERT IGNORE INTO Kamer
     (kamer_nummer, kamer_type, prijs_per_nacht, beschikbaar)
 VALUES
@@ -29,6 +32,7 @@ VALUES
     (4, 'Familie Suite', 179.00, TRUE),
     (5, 'Bruidsuite', 169.00, TRUE);
 
+// Tabel voor reserveringen.
 CREATE TABLE IF NOT EXISTS Reserveringen (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(100) NOT NULL,
@@ -43,6 +47,7 @@ CREATE TABLE IF NOT EXISTS Reserveringen (
     FOREIGN KEY (kamer_nummer) REFERENCES Kamer(kamer_nummer)
 );
 
+// Tabel voor contactberichten.
 CREATE TABLE IF NOT EXISTS Contact (
     id INT AUTO_INCREMENT PRIMARY KEY,
     Gebruikers_id INT,

@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $wachtwoord = $_POST['wachtwoord'] ?? '';
 
+    // Controleer of alle velden zijn ingevuld
     if ($gebruikersnaam && $email && $wachtwoord) {
         try {
             include 'includes/connectie.php';
@@ -21,6 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 session_regenerate_id(true);
                 $_SESSION['gebruiker_id'] = $gebruiker['id'];
                 $_SESSION['gebruikersnaam'] = $gebruiker['gebruikersnaam'];
+                // Zet de admin status in de sessie
                 $_SESSION['is_admin'] = (bool) $gebruiker['is_admin'];
                 header('Location: index.php');
                 exit;

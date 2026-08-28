@@ -10,6 +10,7 @@ if (isset($_POST['verstuur'])) {
     $onderwerp = trim($_POST['onderwerp'] ?? '');
     $bericht_tekst = trim($_POST['bericht'] ?? '');
 
+    // Controleer of alle verplichte velden zijn ingevuld
     if ($naam && $email && $onderwerp && $bericht_tekst) {
         try {
             include 'includes/connectie.php';
@@ -60,7 +61,7 @@ if (isset($_POST['verstuur'])) {
                 <div class="info-icoon">&#9743;</div>
                 <div class="info-tekst">
                     <h4>Telefoon</h4>
-                    <p>+31 20 123 4567<br>Ma - Za: 08:00 - 20:00</p>
+                    <p>+31 20 123 4567<br>Ma - Zo: 08:00 - 20:00</p>
                 </div>
             </div>
 
@@ -89,6 +90,8 @@ if (isset($_POST['verstuur'])) {
                     <?php echo $bericht; ?>
                 </div>
             <?php endif; ?>
+
+            // Het contactformulier met velden voor naam, e-mail, telefoon, onderwerp en bericht. Met validatie voor e-mail en telefoonnummer.
 
             <form method="POST" action="contact.php" id="ContactForm">
                 <div class="formulier-rij">

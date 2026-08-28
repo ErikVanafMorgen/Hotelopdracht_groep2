@@ -1,6 +1,5 @@
 <?php
 $pagina_titel = 'Registratie';
-
 $bericht = null;
 $bericht_type = '';
 
@@ -9,6 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $wachtwoord = $_POST['wachtwoord'] ?? '';
 
+    // Controleer of alle velden zijn ingevuld
     if ($gebruikersnaam && $email && $wachtwoord) {
         try {
             include 'includes/connectie.php';
