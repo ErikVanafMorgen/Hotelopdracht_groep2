@@ -5,22 +5,22 @@ if (session_status() === PHP_SESSION_NONE) {
 
 $ingelogd = isset($_SESSION['gebruiker_id']);
 $is_admin = !empty($_SESSION['is_admin']);
+$huidige_pagina = basename($_SERVER['PHP_SELF']);
 ?>
 
 <nav class="navbar" id="navbar">
     <div class="nav-container">
         <a href="index.php" class="nav-logo">
-            <span class="logo-naam">Zonne Vallei</span>
-            <span class="logo-sub">Hotel & Restaurant</span>
+            <img src="images/logo_zwart.png" alt="Zonne Vallei">
         </a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'index.php' ? 'active' : ''; ?>">Home</a></li>
-            <li><a href="kamers.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'kamers.php' ? 'active' : ''; ?>">Kamers</a></li>
-            <li><a href="restaurant.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'restaurant.php' ? 'active' : ''; ?>">Restaurant</a></li>
-            <li><a href="ons.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'ons.php' ? 'active' : ''; ?>">Over Ons</a></li>
-            <li><a href="contact.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'contact.php' ? 'active' : ''; ?>">Contact</a></li>
+            <li><a href="index.php" class="<?php echo $huidige_pagina == 'index.php' ? 'active' : ''; ?>">Home</a></li>
+            <li><a href="kamers.php" class="<?php echo $huidige_pagina == 'kamers.php' ? 'active' : ''; ?>">Kamers</a></li>
+            <li><a href="restaurant.php" class="<?php echo $huidige_pagina == 'restaurant.php' ? 'active' : ''; ?>">Restaurant</a></li>
+            <li><a href="ons.php" class="<?php echo $huidige_pagina == 'ons.php' ? 'active' : ''; ?>">Over Ons</a></li>
+            <li><a href="contact.php" class="<?php echo $huidige_pagina == 'contact.php' ? 'active' : ''; ?>">Contact</a></li>
             <?php if ($is_admin): ?>
-                <li><a href="admin_kamers.php" class="<?php echo basename($_SERVER['PHP_SELF']) == 'admin_kamers.php' ? 'active' : ''; ?>">Kamers beheren</a></li>
+                <li><a href="admin_kamers.php" class="<?php echo $huidige_pagina == 'admin_kamers.php' ? 'active' : ''; ?>">Kamers beheren</a></li>
             <?php endif; ?>
             <li>
                 <?php if ($ingelogd): ?>

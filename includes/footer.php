@@ -1,7 +1,7 @@
 <footer class="footer">
     <div class="footer-grid">
         <div class="footer-brand">
-            <div class="logo-naam">Zonne Vallei</div>
+            <img src="images/logo_goud.png" alt="Zonne Vallei" class="footer-logo">
             <p>Geniet van luxe, comfort en gastvrijheid in het hart van Nederland. Uw droomverblijf begint hier.</p>
             <div class="footer-social">
                 <div class="social-icoon">f</div>
