@@ -898,6 +898,13 @@ img {
     flex: 1;
 }
 
+/* Geen paarse hover op de adminpagina: de knop blijft goud. */
+.admin-knoppen .btn-verstuur:hover {
+    background: var(--goud);
+    transform: none;
+    box-shadow: none;
+}
+
 .btn-wit-goud {
     background: transparent;
     color: var(--goud);
