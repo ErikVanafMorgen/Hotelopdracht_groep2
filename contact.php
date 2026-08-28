@@ -92,7 +92,7 @@ if (isset($_POST['verstuur'])) {
                 </div>
             <?php endif; ?>
 
-            // Het contactformulier met velden voor naam, e-mail, telefoon, onderwerp en bericht. Met validatie voor e-mail en telefoonnummer.
+            <!-- Het contactformulier met velden voor naam, e-mail, telefoon, onderwerp en bericht. Met validatie voor e-mail en telefoonnummer. -->
 
             <form method="POST" action="contact.php" id="ContactForm">
                 <div class="formulier-rij">

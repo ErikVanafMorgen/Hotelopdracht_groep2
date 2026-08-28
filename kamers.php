@@ -1,7 +1,6 @@
 <?php
 $pagina_titel = 'Kamers';
 include 'includes/connectie.php';
-// Ophalen van de kamers uit de database en foto's voor elk kamertype van het internet.
 $kamers = $pdo->query('SELECT kamer_nummer, kamer_type, prijs_per_nacht, beschikbaar FROM Kamer ORDER BY kamer_nummer')->fetchAll(PDO::FETCH_ASSOC);
 $kamer_afbeeldingen = [
     'Comfort Kamer' => 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&q=80',

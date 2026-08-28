@@ -223,7 +223,7 @@ $kamer = [
                             <?php endforeach; ?>
                         </select>
                         <div class="beschikbaarheid-status">
-                            // Toont de beschikbaarheid van het geselecteerde kamertype.
+                            <!-- Toont de beschikbaarheid van het geselecteerde kamertype. -->
                             <?php if ($gekozen_kamer_type !== ''): ?>
                                 <?php if ($kamer['aantal'] > 0): ?>
                                     <span class="badge in-stock">Nog <?php echo $kamer['aantal']; ?> beschikbaar</span>
@@ -253,7 +253,7 @@ $kamer = [
                 </div>
                 <button type="submit" class="btn-verstuur" name="verstuur">Reserveer Nu</button>
             </form>
-            // Script dat de beschikbaarheid van het geselecteerde kamertype bijwerkt wanneer de gebruiker een ander kamertype selecteert.
+            <!-- Script dat de beschikbaarheid van het geselecteerde kamertype bijwerkt wanneer de gebruiker een ander kamertype selecteert. -->
             <script>
                 document.getElementById('kamer_type').addEventListener('change', function () {
                     const status = document.querySelector('.beschikbaarheid-status');
