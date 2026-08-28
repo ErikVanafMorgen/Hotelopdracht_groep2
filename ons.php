@@ -6,7 +6,6 @@
     <div>
         <h1>Over Hotel Zonne Vallei</h1>
         <p>Gastvrijheid, luxe en aandacht voor detail — dat is waar wij voor staan.</p>
-        <div class="breadcrumb"><a href="index.php">Home</a> / Over Ons</div>
     </div>
 </section>
 
