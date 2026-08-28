@@ -1,15 +1,7 @@
 <?php
 $pagina_titel = 'Kamers';
-include 'includes/connectie.php';
-$kamers = $pdo->query('SELECT kamer_nummer, kamer_type, prijs_per_nacht, beschikbaar FROM Kamer ORDER BY kamer_nummer')->fetchAll(PDO::FETCH_ASSOC);
-$kamer_afbeeldingen = [
-    'Comfort Kamer' => 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&q=80',
-    'Deluxe Kamer' => 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80',
-    'Junior Suite' => 'https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80',
-    'Familie Suite' => 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80',
-    'Bruidsuite' => 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80'
-];
 ?>
+<!-- Header, navigatie en footer staan in aparte bestanden (includes). Zo hoef je HTML maar op een plek aan te passen. -->
 <?php include 'includes/header.php'; ?>
 <?php include 'includes/navbar.php'; ?>
 
@@ -32,8 +24,8 @@ $kamer_afbeeldingen = [
 
     <div class="kamers-grid">
         <div class="kamer-kaart">
-            <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&q=80')">
-                <span class="kamer-prijs">Vanaf &euro;89,- /nacht</span>
+            <div class="kamer-afbeelding kamer-foto-1">
+                <span class="kamer-prijs">Vanaf &euro;109,- /nacht</span>
             </div>
             <div class="kamer-info">
                 <h3>Comfort Kamer</h3>
@@ -51,7 +43,7 @@ $kamer_afbeeldingen = [
         </div>
 
         <div class="kamer-kaart">
-            <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&q=80')">
+            <div class="kamer-afbeelding kamer-foto-2">
                 <span class="kamer-prijs">Vanaf &euro;139,- /nacht</span>
             </div>
             <div class="kamer-info">
@@ -71,8 +63,8 @@ $kamer_afbeeldingen = [
         </div>
 
         <div class="kamer-kaart">
-            <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=600&q=80')">
-                <span class="kamer-prijs">Vanaf &euro;199,- /nacht</span>
+            <div class="kamer-afbeelding kamer-foto-3">
+                <span class="kamer-prijs">Vanaf &euro;159,- /nacht</span>
             </div>
             <div class="kamer-info">
                 <h3>Junior Suite</h3>
@@ -89,7 +81,7 @@ $kamer_afbeeldingen = [
         </div>
 
         <div class="kamer-kaart">
-            <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80')">
+            <div class="kamer-afbeelding kamer-foto-4">
                 <span class="kamer-prijs">Vanaf &euro;179,- /nacht</span>
             </div>
             <div class="kamer-info">
@@ -110,8 +102,8 @@ $kamer_afbeeldingen = [
         </div>
 
         <div class="kamer-kaart">
-            <div class="kamer-afbeelding" style="background-image: url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=600&q=80')">
-                <span class="kamer-prijs">Vanaf &euro;169,- /nacht</span>
+            <div class="kamer-afbeelding kamer-foto-5">
+                <span class="kamer-prijs">Vanaf &euro;199,- /nacht</span>
             </div>
             <div class="kamer-info">
                 <h3>Bruidssuite</h3>
@@ -133,8 +125,8 @@ $kamer_afbeeldingen = [
     </div>
 </section>
 
-<section class="sectie" style="background: var(--wit); padding: 80px 40px; max-width: none;">
-    <div class="reservering-banner" style="max-width: 1200px; margin: 0 auto;">
+<section class="sectie sectie-wit-klein">
+    <div class="reservering-banner container-1200">
         <h3>Niet Zeker Welke Kamer?</h3>
         <p>Neem contact met ons op en wij helpen u de perfecte kamer te vinden voor uw verblijf.</p>
         <a href="contact.php" class="btn-wit">Neem Contact Op</a>

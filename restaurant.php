@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="menu-sectie" style="margin-top: 40px;">
+            <div class="menu-sectie menu-sectie-extra">
                 <h3>Hoofdgerechten</h3>
                 <div class="menu-item">
                     <div class="menu-item-nam">
@@ -137,7 +137,7 @@
                 </div>
             </div>
 
-            <div class="menu-sectie" style="margin-top: 40px;">
+            <div class="menu-sectie menu-sectie-extra">
                 <h3>Kinder Menu's</h3>
                 <div class="menu-item">
                     <div class="menu-item-nam">
@@ -176,7 +176,7 @@
                 </div>
             </div>
 
-            <div class="openingstijden" style="margin-top: 30px;">
+            <div class="openingstijden openingstijden-extra">
                 <h3>Openingstijden</h3>
                 <div class="uren-rij"><span class="dag">Maandag - Vrijdag</span><span class="tijd">07:00 - 22:00</span></div>
                 <div class="uren-rij"><span class="dag">Zaterdag</span><span class="tijd">08:00 - 23:00</span></div>
@@ -187,8 +187,8 @@
     </div>
 </section>
 
-<section class="sectie" style="background: var(--wit); padding: 80px 40px; max-width: none;">
-    <div class="reservering-banner" style="max-width: 1200px; margin: 0 auto;">
+<section class="sectie sectie-wit-klein">
+    <div class="reservering-banner container-1200">
         <h3>Tafel Reserveren</h3>
         <p>Reserveer een tafel in ons restaurant voor een culinaire ervaring die u niet snel zult vergeten.</p>
         <a href="contact.php" class="btn-wit">Reserveer een Tafel</a>
