@@ -20,10 +20,13 @@ $huidige_pagina = basename($_SERVER['PHP_SELF']);
             <li><a href="restaurant.php" class="<?php echo $huidige_pagina == 'restaurant.php' ? 'active' : ''; ?>">Restaurant</a></li>
             <li><a href="ons.php" class="<?php echo $huidige_pagina == 'ons.php' ? 'active' : ''; ?>">Over Ons</a></li>
             <li><a href="contact.php" class="<?php echo $huidige_pagina == 'contact.php' ? 'active' : ''; ?>">Contact</a></li>
+
+            // Alleen voor de admin wordt de link naar "Kamers beheren" weergegeven.
             <?php if ($is_admin): ?>
                 <li><a href="admin_kamers.php" class="<?php echo $huidige_pagina == 'admin_kamers.php' ? 'active' : ''; ?>">Kamers beheren</a></li>
             <?php endif; ?>
             <li>
+                // Afhankelijk van dat je bent ingelogd of uigelogd wordt de knop "Inloggen" of "Uitloggen" weergegeven.
                 <?php if ($ingelogd): ?>
                     <a href="uitloggen.php" class="btn-reserveer">Uitloggen</a>
                 <?php else: ?>
@@ -39,6 +42,7 @@ $huidige_pagina = basename($_SERVER['PHP_SELF']);
     </div>
 </nav>
 
+// Script voor het toevoegen van een schaduw aan de navbar bij scrollen.
 <script>
 window.addEventListener('scroll', function() {
     const navbar = document.getElementById('navbar');

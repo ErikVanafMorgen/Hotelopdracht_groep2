@@ -3,6 +3,7 @@ session_start();
 
 $_SESSION = [];
 
+// Verwijdert de sessiecookie als deze bestaat
 if (ini_get('session.use_cookies')) {
     $cookie_parameters = session_get_cookie_params();
     setcookie(
@@ -17,5 +18,7 @@ if (ini_get('session.use_cookies')) {
 }
 
 session_destroy();
+
+// Je wordt naar de homepagina gestuurd na het uitloggen
 header('Location: index.php');
 exit;

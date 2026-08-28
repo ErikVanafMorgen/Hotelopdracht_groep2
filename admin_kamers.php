@@ -11,12 +11,14 @@ $bewerken_nummer = filter_input(INPUT_GET, 'bewerken', FILTER_VALIDATE_INT) ?: n
 
 include 'includes/connectie.php';
 
+/** Verwerkt het toevoegen of bewerken van de kamer. */
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $actie = $_POST['actie'] ?? '';
     $kamer_type = trim($_POST['kamer_type'] ?? '');
     $prijs = filter_input(INPUT_POST, 'prijs_per_nacht', FILTER_VALIDATE_FLOAT);
     $beschikbaar = isset($_POST['beschikbaar']) ? 1 : 0;
 
+    /** Checkt de ingevoerde gegevens */
     if ($kamer_type === '' || $prijs === false || $prijs === null || $prijs < 0) {
         $bericht = 'Vul een kamertype en een geldige prijs in.';
         $bericht_type = 'fout';
@@ -98,6 +100,7 @@ $huidig = $te_bewerken ?? ['kamer_nummer' => '', 'kamer_type' => '', 'prijs_per_
         </div>
     <?php endif; ?>
 
+    /** Het formulier voor het toevoegen of bewerken van de kamer. */
     <div class="reservering-formulier">
         <h2><?php echo $te_bewerken ? 'Kamer aanpassen' : 'Kamer toevoegen'; ?></h2>
         <form method="POST" action="admin_kamers.php<?php echo $te_bewerken ? '?bewerken=' . (int) $te_bewerken['kamer_nummer'] : ''; ?>">
@@ -131,6 +134,7 @@ $huidig = $te_bewerken ?? ['kamer_nummer' => '', 'kamer_type' => '', 'prijs_per_
         </form>
     </div>
 
+    /** Lijst van de kamers met de mogelijkheid om te bewerken. */
     <div class="admin-kamers-lijst">
         <h2>Bestaande kamers</h2>
         <div class="admin-kamer-kop">
