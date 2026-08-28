@@ -23,12 +23,11 @@ CREATE TABLE IF NOT EXISTS Kamer (
 INSERT IGNORE INTO Kamer
     (kamer_nummer, kamer_type, prijs_per_nacht, beschikbaar)
 VALUES
-    (1, 'Comfort Kamer', 109.00, TRUE),
+    (1, 'Comfort Kamer', 89.00, TRUE),
     (2, 'Deluxe Kamer', 139.00, TRUE),
-    (3, 'Familie Suite', 179.00, TRUE),
-    (4, 'Junior Suite', 159.00, TRUE),
-    (5, 'Familie Suite', 179.00, TRUE),
-    (6, 'Bruidsuite', 199.00, TRUE);
+    (3, 'Junior Suite', 199.00, TRUE),
+    (4, 'Familie Suite', 179.00, TRUE),
+    (5, 'Bruidsuite', 169.00, TRUE);
 
 CREATE TABLE IF NOT EXISTS Reserveringen (
     id INT AUTO_INCREMENT PRIMARY KEY,
