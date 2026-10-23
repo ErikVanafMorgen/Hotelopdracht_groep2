@@ -81,16 +81,20 @@ if (isset($_POST['verstuur'])) {
                     $stmt_gebruiker = $pdo->prepare("SELECT email FROM Gebruikers WHERE id = :id");
                     $stmt_gebruiker->execute([':id' => $_SESSION['gebruiker_id']]);
                     $gebruiker = $stmt_gebruiker->fetch(PDO::FETCH_ASSOC);
+                    $email = trim($gebruiker['email'] ?? '');
 
-                    if (!$gebruiker || !filter_var($gebruiker['email'], FILTER_VALIDATE_EMAIL)) {
-                        $bericht = "Uw account heeft geen geldig e-mailadres. Pas uw accountgegevens aan en probeer opnieuw.";
+                    if (!$gebruiker) {
+                        $bericht = 'Uw accountgegevens konden niet worden gevonden.';
+                        $bericht_type = 'fout';
+                    } elseif ($email === '' || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+                        $bericht = 'Uw account heeft geen geldig e-mailadres. Pas uw accountgegevens aan en probeer opnieuw.';
                         $bericht_type = 'fout';
                     } else {
                         // Voert de reservering uit
                         $pdo->beginTransaction();
                         $stmt = $pdo->prepare("INSERT INTO Reserveringen (email, Gebruikers_id, kamer_nummer, kamer_type, start_datum, eind_datum, creditcardnummer) VALUES (:email, :gebruiker, :kamer_nummer, :kamer_type, :start, :eind, :creditcard)");
                         $stmt->execute([
-                            ':email' => $gebruiker['email'],
+                            ':email' => $email,
                             ':gebruiker' => $_SESSION['gebruiker_id'],
                             ':kamer_nummer' => $kamer['kamer_nummer'],
                             ':kamer_type' => $kamer['kamer_type'],
@@ -149,7 +153,7 @@ if (isset($_POST['verstuur'])) {
                             $mail->CharSet = 'UTF-8';
                             $mail->Encoding = 'base64';
                             $mail->setFrom($afzender, 'Hotel Zonne Vallei');
-                            $mail->addAddress($gebruiker['email']);
+                            $mail->addAddress($email);
                             $mail->isHTML(true);
                             $mail->Subject = $onderwerp;
                             $mail->Body = $mail_html;
@@ -157,6 +161,7 @@ if (isset($_POST['verstuur'])) {
                             $mail->send();
                             $mail_verstuurd = true;
                         } catch (MailException $e) {
+                            error_log('Verificatiemail verzenden mislukt: ' . $e->getMessage());
                             $mail_verstuurd = false;
                         }
 
