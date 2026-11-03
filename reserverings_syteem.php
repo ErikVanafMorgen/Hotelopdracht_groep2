@@ -116,10 +116,10 @@ if (isset($_POST['verstuur'])) {
                         $kamer_nummer_mail = htmlspecialchars($kamer['kamer_nummer'], ENT_QUOTES, 'UTF-8');
                         $prijs_mail = number_format($kamer['prijs_per_nacht'], 2, ',', '.');
                         $mailbericht = "Beste gast,\n\nUw reservering is ontvangen.\n\n" .
-                            "Kamer_type: {$kamer['kamer_type']}\n" .
+                            'Kamer_type: ' . $kamer['kamer_type'] . "\n" .
                             "Aankomst: {$start_datum}\n" .
                             "Vertrek: {$eind_datum}\n" .
-                            "Kamer_nummer: {$kamer['kamer_nummer']}\n" .
+                            'Kamer_nummer: ' . $kamer['kamer_nummer'] . "\n" .
                             "Prijs per nacht: EUR {$prijs_mail}\n\n" .
                             "Met vriendelijke groet,\nHotel Zonne Vallei";
                         $mail_html = '<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"></head><body style="margin:0;background:#f5f1ea;font-family:Arial,sans-serif;color:#2f2a25;">' .
@@ -134,8 +134,21 @@ if (isset($_POST['verstuur'])) {
                             '<tr><td style="padding:12px 0;font-weight:bold;">Prijs per nacht</td><td style="padding:12px 0;">&euro; ' . $prijs_mail . '</td></tr>' .
                             '</table><p style="margin:0;line-height:1.6;">Met vriendelijke groet,<br>Hotel Zonne Vallei</p></div></body></html>';
                         $mail_verstuurd = false;
+                        $error_message = '';
                         try {
-                            // Haalt de SMTP-configuratie op uit de omgevingsvariabelen
+                            $env_file = __DIR__ . '/.env';
+                            if (is_file($env_file)) {
+                                $env_config = parse_ini_file($env_file, false, INI_SCANNER_RAW);
+                                if ($env_config === false) {
+                                    throw new MailException('Het .env-bestand bevat ongeldige configuratie.');
+                                }
+                                foreach (['SMTP_USERNAME', 'SMTP_PASSWORD', 'MAIL_FROM'] as $config_key) {
+                                    if (getenv($config_key) === false && isset($env_config[$config_key])) {
+                                        putenv($config_key . '=' . $env_config[$config_key]);
+                                    }
+                                }
+                            }
+
                             $smtp_username = getenv('SMTP_USERNAME') ?: '';
                             $smtp_password = getenv('SMTP_PASSWORD') ?: '';
                             $afzender = getenv('MAIL_FROM') ?: $smtp_username;
@@ -163,11 +176,15 @@ if (isset($_POST['verstuur'])) {
                         } catch (MailException $e) {
                             error_log('Verificatiemail verzenden mislukt: ' . $e->getMessage());
                             $mail_verstuurd = false;
+                            $error_message = $e->getMessage();
                         }
 
                         $bericht = $mail_verstuurd
                             ? "Uw reservering is succesvol geplaatst. De verificatie is naar uw e-mailadres verzonden."
                             : "Uw reservering is succesvol geplaatst. De e-mail kon niet worden verzonden; controleer uw mailconfiguratie.";
+                        if ($error_message !== '') {
+                            $bericht .= ' Fout: ' . $error_message;
+                        }
                         $bericht_type = 'succes';
                     }
                 }
